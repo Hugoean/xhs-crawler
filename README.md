@@ -36,7 +36,7 @@ python src/render_html.py
 
 > **边爬边出结果**：`run.py` 不是等全部爬完才出看板。爬虫每攒够一小批（`config.INCREMENTAL_SAVE_EVERY`，默认 15 条）、以及每爬完一个关键词，都会立即落盘并重新渲染 `面经看板.html`，所以**爬取过程中随时刷新浏览器就能看到内容越来越多**；渲染失败也不会中断爬取。
 
-> **尽量爬全今年 + 防封号**：默认 14 个关键词覆盖多种说法、搜索结果尽量切到「最新」排序、配合 `FILTER_YEAR=2026` 只留今年。反封号策略是**有头浏览器 + 随机延时 1.5~4s + 模拟滚动 + 单关键词中等量（60 条）+ 启动参数 `--disable-blink-features=AutomationControlled`**，靠**定时多轮增量累积**爬全，而非单次猛抓。
+> **尽量爬全今年 + 防封号**：内置 14 个关键词覆盖多种说法，但**每轮只随机抽 5 个跑**、搜索尽量切「最新」排序、配合日期过滤只留近一年。反封号策略是**有头浏览器 + 关键词间 30~90s 长休息 + 每日频率闸（20h）+ 撞验证码/滑块即熔断 + 单关键词 30 条上限 + `--disable-blink-features=AutomationControlled`**，靠**定时多轮增量累积**爬全，而非单次猛抓。详见文末「七、反爬 / 风控熔断」。
 
 ---
 
@@ -86,8 +86,12 @@ python src/render_html.py
 - `KEYWORDS`：搜索关键词列表（默认 5 个大模型面经相关）
 - `FILTER_YEAR`：只保留该年（含）之后的笔记，默认 `2026`
 - `HEADLESS`：是否无头，默认 `False`（方便观察 / 手动过验证）
-- `MAX_SCROLL_TIMES` / `MAX_NOTES_PER_KEYWORD`：滚动次数 / 单关键词抓取上限
-- `DELAY_*` / `SCROLL_DELAY_*`：随机延时区间（反爬）
+- `MAX_SCROLL_TIMES` / `MAX_NOTES_PER_KEYWORD`：滚动次数 / 单关键词抓取上限（默认 5 / 30）
+- `DELAY_*` / `SCROLL_DELAY_*`：页内随机延时区间（反爬）
+- `KEYWORDS_PER_RUN`：每轮随机抽几个关键词跑（默认 5，防单轮量过大）
+- `KEYWORD_DELAY_MIN/MAX`：关键词之间长休息区间（默认 30~90s）
+- `MIN_HOURS_BETWEEN_RUNS`：两轮最小间隔小时数（默认 20，频率闸）
+- `RISK_URL_KEYWORDS` / `RISK_TEXT_KEYWORDS`：风控熔断信号（命中即停本轮）
 - `CATEGORY_*_KEYWORDS`：分类规则关键词
 
 **分类规则**：正文/标题命中「手撕/代码/LeetCode/算法题/写代码/coding…」→ 手撕算法题；
@@ -150,9 +154,30 @@ plist 关键字段：`Program`/`ProgramArguments` 指向 venv 的 python + `run.
 
 ---
 
-## 七、反爬 / 合规 / 封号风险提示
+## 七、反爬 / 风控熔断 / 合规
 
-- 已内置：复用登录态、随机延时、模拟滚动、抓取上限，降低风控概率；但**不能完全避免**。
-- 频繁/大量抓取可能触发滑块验证或**临时封号**。建议：控制频率（如每天 1 次）、单关键词别拉太多、用小号。
+> ⚠️ 本项目曾触发小红书后台警告，已针对性加固。核心思路：**降频 + 打散 + 撞墙即停**，靠多轮增量累积而非单次猛抓。
+
+### 已内置的风控措施
+
+| 措施 | 说明 | 配置项（`config.py`） |
+| --- | --- | --- |
+| 复用登录态 | 扫码一次后复用 `storage_state`，不反复登录 | `STORAGE_STATE_PATH` |
+| **每轮只抽部分关键词** | 每次从全部关键词里**随机抽 5 个并打散顺序**，不再一轮把十几个词全搜一遍 | `KEYWORDS_PER_RUN = 5` |
+| **关键词间长休息** | 切词之间随机歇 **30~90s**（真人节奏），不再 1.5~4s 秒切 | `KEYWORD_DELAY_MIN/MAX` |
+| **每日频率闸** | 距上次运行不足 **20h** 直接跳过本轮，防短时间多轮 | `MIN_HOURS_BETWEEN_RUNS = 20` |
+| 降低单词强度 | 单关键词上限 **30 条 / 最多滚 5 次**，连续无新增提前停 | `MAX_NOTES_PER_KEYWORD` / `MAX_SCROLL_TIMES` |
+| 页内随机延时 | 操作 1.5~4s、滚动 1~2.5s 随机延时 + 变距滚动 | `DELAY_*` / `SCROLL_DELAY_*` |
+| 反自动化指纹 | `--disable-blink-features=AutomationControlled` + 自定义 UA | `LAUNCH_ARGS` / `USER_AGENT` |
+| **风控熔断** | 打开页 / 每次滚动都检测**验证码 / 滑块 / 登录失效**，命中立即停止本轮（已抓到的照常保存），不再继续猛滚加重警告 | `RISK_URL_KEYWORDS` / `RISK_TEXT_KEYWORDS` |
+
+### 撞上风控 / 被警告后怎么办
+
+1. 程序会自动熔断并在日志打印 `⚠️ 撞上风控`——**先停手，隔一天再跑**。
+2. 频率闸会挡住 20h 内的重复运行；如确需强制运行，删除 `data/last_run.txt` 即可。
+3. 反复被验证时：把 `KEYWORDS_PER_RUN` 调到 2~3、`MIN_HOURS_BETWEEN_RUNS` 调到 24+、拉长各项延时，或换小号、避开高峰时段。
+4. 出现验证码时保持 `HEADLESS=False`，手动过一下即可。
+
+### 合规
+
 - 仅供**个人学习 / 面试准备**，请勿商用、勿二次传播他人内容，遵守小红书用户协议与 robots 约定。
-- 若出现验证码，保持 `HEADLESS=False` 手动过一下即可。

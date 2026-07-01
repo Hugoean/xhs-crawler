@@ -20,6 +20,9 @@ STORAGE_STATE_PATH = os.path.join(BASE_DIR, "xhs_storage_state.json")
 # 增量去重用的「已抓笔记 ID」记录文件
 SEEN_IDS_PATH = os.path.join(DATA_DIR, "seen_ids.json")
 
+# 上次成功发起抓取的时间戳（用于每日频率闸，防止短时间多轮触发风控）
+LAST_RUN_PATH = os.path.join(DATA_DIR, "last_run.txt")
+
 # 日志文件
 LOG_PATH = os.path.join(BASE_DIR, "crawler.log")
 
@@ -60,10 +63,10 @@ FILTER_YEAR = 2026  # 兼容旧引用（实际过滤以 FILTER_SINCE 为准）
 INCREMENTAL_SAVE_EVERY = 15
 
 # 每个关键词最多向下滚动加载多少次（次数越多抓得越多，但越慢越容易被风控）
-MAX_SCROLL_TIMES = 8
+MAX_SCROLL_TIMES = 5
 
 # 每个关键词期望抓到的笔记数量上限（达到后提前停止滚动）
-MAX_NOTES_PER_KEYWORD = 60
+MAX_NOTES_PER_KEYWORD = 30
 
 
 # ============ 反爬 / 延时配置 ============
@@ -74,6 +77,27 @@ DELAY_MAX = 4.0
 # 每次滚动之间的随机等待区间（秒）
 SCROLL_DELAY_MIN = 1.0
 SCROLL_DELAY_MAX = 2.5
+
+# 关键词之间的「长休息」区间（秒）。切换搜索词是强风控信号，间隔必须够长，
+# 模拟真人看完一批笔记再换词搜；别再用 1.5~4s 的短延时切词。
+KEYWORD_DELAY_MIN = 30.0
+KEYWORD_DELAY_MAX = 90.0
+
+# 每一轮最多只跑这么多个关键词（从 KEYWORDS 里随机抽取 + 打散顺序）。
+# 靠定时多轮增量累积爬全，而不是一轮把十几个词全搜一遍（那是被警告的主因）。
+KEYWORDS_PER_RUN = 5
+
+# 两轮之间的最小间隔（小时）。距上次运行不足这个时长就拒绝本轮，防高频。
+MIN_HOURS_BETWEEN_RUNS = 20
+
+# ---- 风控熔断信号 ----
+# 页面 URL 命中以下任一关键词 → 判定撞上风控/登录失效，立即熔断停止本轮。
+RISK_URL_KEYWORDS = ["captcha", "verify", "security", "web-login", "login/"]
+# 页面可见文本命中以下任一短语 → 同样熔断（用较强短语，避免误伤正常页面）。
+RISK_TEXT_KEYWORDS = [
+    "滑块", "拖动下方滑块", "验证码", "安全验证", "完成验证", "行为验证",
+    "扫码登录", "登录后查看", "访问异常", "操作过于频繁", "请稍后再试", "当前操作异常",
+]
 
 
 # ============ 浏览器配置 ============

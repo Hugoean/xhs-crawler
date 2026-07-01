@@ -41,11 +41,61 @@ logger = logging.getLogger("xhs_crawler")
 
 
 # ============ 工具函数 ============
+class RiskControlHit(Exception):
+    """撞上风控（验证码/滑块/登录失效等）时抛出，用于熔断停止本轮。"""
+
+
 def _sleep(a=None, b=None):
     """随机延时，模拟人类操作。"""
     a = config.DELAY_MIN if a is None else a
     b = config.DELAY_MAX if b is None else b
     time.sleep(random.uniform(a, b))
+
+
+def _keyword_sleep():
+    """关键词之间的长休息（30~90s），模拟真人看完一批再换词搜，降低风控。"""
+    secs = random.uniform(config.KEYWORD_DELAY_MIN, config.KEYWORD_DELAY_MAX)
+    logger.info(f"  关键词间休息 {secs:.0f}s …")
+    time.sleep(secs)
+
+
+def _too_soon_since_last_run():
+    """距上次运行不足 MIN_HOURS_BETWEEN_RUNS 小时则返回剩余小时数，否则 None。"""
+    try:
+        with open(config.LAST_RUN_PATH, encoding="utf-8") as f:
+            last = datetime.datetime.fromisoformat(f.read().strip())
+    except Exception:
+        return None  # 无记录 / 读取失败 → 放行
+    remain = config.MIN_HOURS_BETWEEN_RUNS - (
+        datetime.datetime.now() - last
+    ).total_seconds() / 3600
+    return remain if remain > 0 else None
+
+
+def _stamp_last_run():
+    """记录本轮运行时间戳（无论是否熔断，只要发起了请求就记，防止立刻重试再撞）。"""
+    try:
+        with open(config.LAST_RUN_PATH, "w", encoding="utf-8") as f:
+            f.write(datetime.datetime.now().isoformat())
+    except Exception as e:
+        logger.warning(f"写入运行时间戳失败（忽略）：{e}")
+
+
+def check_risk(page):
+    """检测是否撞上风控（验证码/滑块/登录失效）。命中则抛 RiskControlHit 触发熔断。"""
+    try:
+        url = (page.url or "").lower()
+    except Exception:
+        url = ""
+    if any(k in url for k in config.RISK_URL_KEYWORDS):
+        raise RiskControlHit(f"URL 命中风控信号：{page.url}")
+    try:
+        body = page.inner_text("body", timeout=3000)[:3000]
+    except Exception:
+        body = ""
+    for kw in config.RISK_TEXT_KEYWORDS:
+        if kw in body:
+            raise RiskControlHit(f"页面命中风控信号：{kw}")
 
 
 def ensure_dirs():
@@ -441,6 +491,9 @@ def crawl_keyword(page, keyword: str, flush_cb=None):
 
     _sleep()
 
+    # 打开搜索页后先探一下有没有撞风控（验证码/滑块/登录失效），撞了立即熔断
+    check_risk(page)
+
     # 尽量切到「最新」排序，优先抓今年的新内容
     try:
         try_switch_to_latest(page)
@@ -474,6 +527,9 @@ def crawl_keyword(page, keyword: str, flush_cb=None):
             except Exception:
                 pass
         time.sleep(random.uniform(config.SCROLL_DELAY_MIN, config.SCROLL_DELAY_MAX))
+
+        # 每轮滚动都探一次风控，撞上立即熔断（别再继续猛滚加重警告）
+        check_risk(page)
 
         # 边爬边保存：攒够一小批就立即落盘 + 刷新看板
         _maybe_flush()
@@ -578,7 +634,6 @@ def run(keywords=None):
     跑一遍所有关键词：抓取 → 时间过滤 → 增量去重 → 保存。
     返回本次新增的笔记列表。
     """
-    keywords = keywords or config.KEYWORDS
     ensure_dirs()
 
     if not os.path.exists(config.STORAGE_STATE_PATH):
@@ -587,6 +642,24 @@ def run(keywords=None):
             f"请先运行：python login.py"
         )
         return []
+
+    # 频率闸：距上次运行太近就直接跳过，防止短时间多轮触发风控
+    remain = _too_soon_since_last_run()
+    if remain is not None:
+        logger.warning(
+            f"距上次运行不足 {config.MIN_HOURS_BETWEEN_RUNS}h（还需等 {remain:.1f}h），"
+            f"本轮跳过以防风控。如确需强制运行，删除 {config.LAST_RUN_PATH} 即可。"
+        )
+        return []
+
+    # 每轮只随机抽一部分关键词并打散顺序，靠多轮增量累积，降低单轮风控
+    keywords = keywords or config.KEYWORDS
+    if len(keywords) > config.KEYWORDS_PER_RUN:
+        keywords = random.sample(keywords, config.KEYWORDS_PER_RUN)
+    else:
+        keywords = list(keywords)
+        random.shuffle(keywords)
+    logger.info(f"本轮抽中 {len(keywords)} 个关键词：{', '.join(keywords)}")
 
     seen = load_seen_ids()
     new_notes = []
@@ -646,12 +719,18 @@ def run(keywords=None):
             try:
                 # flush_cb：每攒一小批就 process_batch（去重+过滤+落盘+渲染）
                 crawl_keyword(page, kw, flush_cb=process_batch)
+            except RiskControlHit as e:
+                logger.error(f"⚠️ 撞上风控，立即停止本轮（已抓到的照常保存）：{e}")
+                break  # 熔断：不再继续其它关键词
             except Exception as e:
                 logger.error(f"抓取关键词「{kw}」出错：{e}")
 
-            _sleep()  # 关键词之间多歇会儿
+            _keyword_sleep()  # 关键词之间长休息（30~90s）
 
         browser.close()
+
+    # 只要发起了抓取就记录时间戳（含熔断），供频率闸判断
+    _stamp_last_run()
 
     # 收尾：写一份本轮完整快照（带时间戳）
     if new_notes:
