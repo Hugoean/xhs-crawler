@@ -99,6 +99,24 @@ RISK_TEXT_KEYWORDS = [
     "扫码登录", "登录后查看", "访问异常", "操作过于频繁", "请稍后再试", "当前操作异常",
 ]
 
+# ---- 强化档反爬（一个总开关）----
+# 开启后额外启用「人类化滚动 + 浏览器指纹增强」，进一步降低被识别概率。
+# 置 False 即回到基础档（固定滚动 + 固定 UA/视窗）。
+ENHANCED_ANTI_CRAWL = True
+
+# 指纹增强：地区 / 时区 / 语言（贴近国内真实用户环境）
+LOCALE = "zh-CN"
+TIMEZONE_ID = "Asia/Shanghai"
+# 随机视窗候选：开启强化档时每次从中随机挑一个，避免固定分辨率指纹。
+VIEWPORT_CHOICES = [
+    {"width": 1280, "height": 900},
+    {"width": 1440, "height": 900},
+    {"width": 1536, "height": 864},
+    {"width": 1366, "height": 768},
+]
+# 强化档下是否改用浏览器真实默认 UA（而非上面写死的 USER_AGENT，避免版本对不上）
+ENHANCED_USE_REAL_UA = True
+
 
 # ============ 浏览器配置 ============
 # 是否无头模式。默认 False，方便观察页面 / 手动过验证码

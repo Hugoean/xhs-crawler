@@ -98,6 +98,52 @@ def check_risk(page):
             raise RiskControlHit(f"页面命中风控信号：{kw}")
 
 
+def _basic_scroll(page):
+    """基础档滚动：一次性下滑一大段 + 固定区间随机停顿。"""
+    try:
+        page.mouse.wheel(0, random.randint(1500, 2500))
+    except Exception:
+        try:
+            page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
+        except Exception:
+            pass
+    time.sleep(random.uniform(config.SCROLL_DELAY_MIN, config.SCROLL_DELAY_MAX))
+
+
+def _human_scroll(page):
+    """强化档人类化滚动：分几段变速下滑、偶尔回滚一点、随机停顿（含偶发长停模拟阅读）。"""
+    for _ in range(random.randint(2, 4)):
+        dy = random.randint(400, 900)
+        try:
+            page.mouse.wheel(0, dy)
+        except Exception:
+            try:
+                page.evaluate(f"window.scrollBy(0, {dy})")
+            except Exception:
+                pass
+        time.sleep(random.uniform(0.3, 0.9))
+    # 25% 概率往回滚一点（真人会回看）
+    if random.random() < 0.25:
+        try:
+            page.mouse.wheel(0, -random.randint(200, 500))
+        except Exception:
+            pass
+        time.sleep(random.uniform(0.4, 1.0))
+    # 15% 概率长停「阅读」，否则常规停顿
+    if random.random() < 0.15:
+        time.sleep(random.uniform(3.0, 6.0))
+    else:
+        time.sleep(random.uniform(config.SCROLL_DELAY_MIN, config.SCROLL_DELAY_MAX))
+
+
+def _scroll_once(page):
+    """按开关选择滚动方式。"""
+    if config.ENHANCED_ANTI_CRAWL:
+        _human_scroll(page)
+    else:
+        _basic_scroll(page)
+
+
 def ensure_dirs():
     """确保数据目录存在。"""
     os.makedirs(config.DATA_DIR, exist_ok=True)
@@ -519,14 +565,7 @@ def crawl_keyword(page, keyword: str, flush_cb=None):
     # 模拟滚动加载
     last_count = 0
     for i in range(config.MAX_SCROLL_TIMES):
-        try:
-            page.mouse.wheel(0, random.randint(1500, 2500))
-        except Exception:
-            try:
-                page.evaluate("window.scrollBy(0, document.body.scrollHeight)")
-            except Exception:
-                pass
-        time.sleep(random.uniform(config.SCROLL_DELAY_MIN, config.SCROLL_DELAY_MAX))
+        _scroll_once(page)  # 基础档 / 强化档人类化滚动，由 ENHANCED_ANTI_CRAWL 开关决定
 
         # 每轮滚动都探一次风控，撞上立即熔断（别再继续猛滚加重警告）
         check_risk(page)
@@ -708,11 +747,30 @@ def run(keywords=None):
             headless=config.HEADLESS,
             args=config.LAUNCH_ARGS,  # 反自动化检测
         )
-        context = browser.new_context(
+        # 基础指纹
+        ctx_kwargs = dict(
             storage_state=config.STORAGE_STATE_PATH,
             user_agent=config.USER_AGENT,
             viewport=config.VIEWPORT,
         )
+        # 强化档：指纹增强（随机视窗 + 地区/时区/语言 + 可选真实 UA）
+        if config.ENHANCED_ANTI_CRAWL:
+            ctx_kwargs.update(
+                viewport=random.choice(config.VIEWPORT_CHOICES),
+                locale=config.LOCALE,
+                timezone_id=config.TIMEZONE_ID,
+            )
+            if config.ENHANCED_USE_REAL_UA:
+                ctx_kwargs.pop("user_agent", None)  # 用 chromium 真实默认 UA，避免版本对不上
+        context = browser.new_context(**ctx_kwargs)
+        # 强化档：抹掉 navigator.webdriver 自动化痕迹
+        if config.ENHANCED_ANTI_CRAWL:
+            try:
+                context.add_init_script(
+                    "Object.defineProperty(navigator,'webdriver',{get:()=>undefined})"
+                )
+            except Exception as e:
+                logger.debug(f"注入反检测脚本失败（忽略）：{e}")
         page = context.new_page()
 
         for kw in keywords:

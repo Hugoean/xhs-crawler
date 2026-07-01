@@ -92,6 +92,7 @@ python src/render_html.py
 - `KEYWORD_DELAY_MIN/MAX`：关键词之间长休息区间（默认 30~90s）
 - `MIN_HOURS_BETWEEN_RUNS`：两轮最小间隔小时数（默认 20，频率闸）
 - `RISK_URL_KEYWORDS` / `RISK_TEXT_KEYWORDS`：风控熔断信号（命中即停本轮）
+- `ENHANCED_ANTI_CRAWL`：强化档总开关（人类化滚动 + 指纹增强，默认开，可置 `False` 回基础档）
 - `CATEGORY_*_KEYWORDS`：分类规则关键词
 
 **分类规则**：正文/标题命中「手撕/代码/LeetCode/算法题/写代码/coding…」→ 手撕算法题；
@@ -170,6 +171,7 @@ plist 关键字段：`Program`/`ProgramArguments` 指向 venv 的 python + `run.
 | 页内随机延时 | 操作 1.5~4s、滚动 1~2.5s 随机延时 + 变距滚动 | `DELAY_*` / `SCROLL_DELAY_*` |
 | 反自动化指纹 | `--disable-blink-features=AutomationControlled` + 自定义 UA | `LAUNCH_ARGS` / `USER_AGENT` |
 | **风控熔断** | 打开页 / 每次滚动都检测**验证码 / 滑块 / 登录失效**，命中立即停止本轮（已抓到的照常保存），不再继续猛滚加重警告 | `RISK_URL_KEYWORDS` / `RISK_TEXT_KEYWORDS` |
+| **强化档（一个开关）** | 额外启用**人类化滚动**（分段变速下滑 / 偶尔回滚 / 随机长停模拟阅读）+ **指纹增强**（随机视窗、`zh-CN`、`Asia/Shanghai`、浏览器真实 UA、抹除 `navigator.webdriver` 痕迹）。置 `False` 即回到基础档 | `ENHANCED_ANTI_CRAWL`（默认开） |
 
 ### 撞上风控 / 被警告后怎么办
 
