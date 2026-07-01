@@ -1,0 +1,9 @@
+# 小红书面经爬虫依赖
+# 作者：施晔  学号：2362404008
+# 注意：项目自带 venv 已装好以下依赖，无需重装。
+# 如需在新环境复现：
+#   python3 -m venv venv && source venv/bin/activate
+#   pip install -r requirements.txt
+#   playwright install chromium
+
+playwright==1.60.0

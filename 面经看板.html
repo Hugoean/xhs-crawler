@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大模型面经看板</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f5f6f8; color: #222;
+  }
+  header {
+    background: linear-gradient(135deg, #ff2442, #ff6b6b);
+    color: #fff; padding: 24px 32px;
+  }
+  header h1 { margin: 0 0 6px; font-size: 24px; }
+  header .sub { font-size: 13px; opacity: .9; }
+  .tabs {
+    display: flex; gap: 8px; padding: 16px 32px 0; flex-wrap: wrap;
+    position: sticky; top: 0; background: #f5f6f8; z-index: 10;
+  }
+  .tab {
+    padding: 8px 18px; border-radius: 20px; cursor: pointer;
+    background: #fff; border: 1px solid #e2e4e8; font-size: 14px; user-select: none;
+  }
+  .tab.active { background: #ff2442; color: #fff; border-color: #ff2442; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px; padding: 20px 32px 40px;
+  }
+  .card {
+    background: #fff; border-radius: 12px; padding: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06); display: flex; flex-direction: column;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
+  .card-head { margin-bottom: 8px; }
+  .badge {
+    display: inline-block; font-size: 12px; padding: 2px 10px;
+    border-radius: 10px; margin-right: 6px; color: #fff;
+  }
+  .badge-coding { background: #2f6fed; }
+  .badge-bagu { background: #19b36b; }
+  .badge-other { background: #999; }
+  .card-title {
+    font-size: 16px; font-weight: 600; color: #1a1a1a; text-decoration: none;
+    line-height: 1.4; margin-bottom: 8px;
+  }
+  .card-title:hover { color: #ff2442; }
+  .card-desc { font-size: 13px; color: #666; line-height: 1.5; flex: 1; margin-bottom: 10px; }
+  .card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .tag { font-size: 12px; padding: 2px 9px; border-radius: 6px; border: 1px solid transparent; }
+  .tag-company { background: #fff3e6; color: #d46b08; border-color: #ffd591; }
+  .tag-position { background: #e6f4ff; color: #0958d9; border-color: #91caff; }
+  .card-meta { display: flex; gap: 14px; font-size: 12px; color: #888; margin-bottom: 8px; flex-wrap: wrap; }
+  .card-prov { display: flex; gap: 14px; font-size: 11px; color: #aaa; margin-bottom: 10px;
+    flex-wrap: wrap; border-top: 1px dashed #f0f0f0; padding-top: 8px; }
+  .card-foot { display: flex; justify-content: flex-end; align-items: center;
+    border-top: 1px solid #f0f0f0; padding-top: 10px; font-size: 12px; }
+  .open-link { color: #ff2442; text-decoration: none; }
+  .empty { padding: 60px; text-align: center; color: #aaa; }
+</style>
+</head>
+<body>
+<header>
+  <h1>大模型 / LLM 面经看板</h1>
+  <div class="sub">
+    共 100 条 ｜ 八股题 71 ｜ 手撕算法题 65 ｜ 综合 16
+    ｜ 生成时间 2026-06-28 16:29:02 ｜ 作者：施晔(2362404008)
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" data-filter="全部">全部 (100)</div>
+  <div class="tab" data-filter="八股题">八股题 (71)</div>
+  <div class="tab" data-filter="手撕算法题">手撕算法题 (65)</div>
+  <div class="tab" data-filter="综合">综合 (16)</div>
+</div>
+
+<div class="grid" id="grid">
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a409b910000000015027430?xsec_token=ABRN3QwJ1C1ZoGnrIrHrSB3qkY4asiS65lO1_orLGK_nE=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型算法面试手撕题: GSPO</a>
+      <div class="card-desc">#古希腊掌管代码的神[话题]# #大模型面试[话题]# #大模型算法[话题]# #llmforge[话题]# #字节跳动[话题]# #大模型手撕[话题]# #大模型leetcode[话题]# #大模型面试手撕代码[话题]# #互联网大厂[话…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@古希腊掌管代码的神（打工版）</span>
+        <span title="发布时间">🕒 发布 2026-06-28 11:57</span>
+        <span title="点赞">❤ 17</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:55</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a409b910000000015027430?xsec_token=ABRN3QwJ1C1ZoGnrIrHrSB3qkY4asiS65lO1_orLGK_nE=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a409b910000000015027430?xsec_token=ABRN3QwJ1C1ZoGnrIrHrSB3qkY4asiS65lO1_orLGK_nE=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a3f54a30000000006020dc7?xsec_token=ABUmTIYL60DCRuyzab0mfCqud2779xxqRVKViOX8eCWOQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节本地生活 AI Agent岗三轮技术面，贼难</a>
+      <div class="card-desc">面试感受
+这面试真挺硬核的，尤其二三面 Harness + 多Agent + Go 并发追问，别被唬住。面试官要是拿 demo 选手和工程选手来区分你，你就往生产痛点扯——超时、重试、checkpoint、成本、RAG 坏 case 怎么修…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 后端</span></div>
+      <div class="card-meta">
+        <span title="作者">@程序员峰哥</span>
+        <span title="发布时间">🕒 发布 2026-06-27 12:42</span>
+        <span title="点赞">❤ 135</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:00</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a3f54a30000000006020dc7?xsec_token=ABUmTIYL60DCRuyzab0mfCqud2779xxqRVKViOX8eCWOQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a3f54a30000000006020dc7?xsec_token=ABUmTIYL60DCRuyzab0mfCqud2779xxqRVKViOX8eCWOQ=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a3e18ac000000001503ce5a?xsec_token=ABxTKq8yuVOCE3jAHVmE3afsdreR3Qq1scuWQ_lYecYGU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型八股文，5天背完面试通过率96%</a>
+      <div class="card-desc">拿走不谢~
+	
+#计算机[话题]# #互联网大厂[话题]# #大模型[话题]# #算法[话题]# #人工智能就业[话题]# #编程[话题]# #大厂[话题]# #面经[话题]# #大模型面试[话题]# #大模型面试题[话题]#</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@又青_</span>
+        <span title="发布时间">🕒 发布 2026-06-26 14:14</span>
+        <span title="点赞">❤ 11</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:22:55</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a3e18ac000000001503ce5a?xsec_token=ABxTKq8yuVOCE3jAHVmE3afsdreR3Qq1scuWQ_lYecYGU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a3e18ac000000001503ce5a?xsec_token=ABxTKq8yuVOCE3jAHVmE3afsdreR3Qq1scuWQ_lYecYGU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a3df6d6000000000803045a?xsec_token=ABcJDm3UabHyEtCzpQ6-PVsKV91t4Bcb-nMhyYwCX0yNM=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型八股文，5天背完拿offer</a>
+      <div class="card-desc">希望可以帮到你
+	
+#大模型[话题]# #多模态人工智能[话题]# #嵌入式开发[话题]# #大模型面试[话题]# #大模型开发[话题]# #算法[话题]# #LLM[话题]# #互联网大厂[话题]#</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@勺子</span>
+        <span title="发布时间">🕒 发布 2026-06-26 11:49</span>
+        <span title="点赞">❤ 8</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:52</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a3df6d6000000000803045a?xsec_token=ABcJDm3UabHyEtCzpQ6-PVsKV91t4Bcb-nMhyYwCX0yNM=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a3df6d6000000000803045a?xsec_token=ABcJDm3UabHyEtCzpQ6-PVsKV91t4Bcb-nMhyYwCX0yNM=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a3dd948000000002103e3cf?xsec_token=ABcJDm3UabHyEtCzpQ6-PVsFXL81YgiHsBz9Ob0ORoDHU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">阿里大模型测评一面面经</a>
+      <div class="card-desc">bg28届双9硕，主投infra方向，附带投算法，测评岗瞎投的，没想到简历过了。
+	
+面试官很友好，看起来年龄不大，没有传说中的登味，也没有教我做事，对我的回答大部分都是鼓励式认可，面试体验非常好。面试原本30min简历提问，无八股无手撕，…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@空虚公子</span>
+        <span title="发布时间">🕒 发布 2026-06-26 09:43</span>
+        <span title="点赞">❤ 17</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:16</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a3dd948000000002103e3cf?xsec_token=ABcJDm3UabHyEtCzpQ6-PVsFXL81YgiHsBz9Ob0ORoDHU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a3dd948000000002103e3cf?xsec_token=ABcJDm3UabHyEtCzpQ6-PVsFXL81YgiHsBz9Ob0ORoDHU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a3c8ec400000000110063de?xsec_token=ABFQc1JsflYvmFwdBJG5Is25ay3MDP9HTZ3cIfiiyAuxg=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型能力到底怎么评？评测全解</a>
+      <div class="card-desc">榜单分数能信吗？大模型怎么评测是高频考点，6 张卡讲透👇
+	
+🔹 主流基准：MMLU 测知识（57 学科）、GSM8K/MATH 测数学、HumanEval 测代码。
+	
+🔹 评测方式：客观题看准确率；开放生成靠人工或 LLM-as-Jud…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@AI旅行者</span>
+        <span title="发布时间">🕒 发布 2026-06-25 10:13</span>
+        <span title="点赞">❤ 5</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:45</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a3c8ec400000000110063de?xsec_token=ABFQc1JsflYvmFwdBJG5Is25ay3MDP9HTZ3cIfiiyAuxg=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a3c8ec400000000110063de?xsec_token=ABFQc1JsflYvmFwdBJG5Is25ay3MDP9HTZ3cIfiiyAuxg=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a3a9ef9000000001603dbcd?xsec_token=ABIm2RtHt8R7zxFDFNLO3X4eKQwn4U35DcdeOsN2UfVvA=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型算法面经</a>
+      <div class="card-desc">1. 图像生成业务里你整套方案是怎么迭代优化的？
+2. 你尝试过哪些推理加速方案，最终为什么没有落地使用？
+3. 完整训练流程是什么？
+4. 更换提示词模板后模型效果变差，你是怎么定位和优化的？
+5. 怎么搭建评测体系衡量底座模型基础能力？…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@顺藤摸瓜</span>
+        <span title="发布时间">🕒 发布 2026-06-23 22:58</span>
+        <span title="点赞">❤ 11</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:57</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a3a9ef9000000001603dbcd?xsec_token=ABIm2RtHt8R7zxFDFNLO3X4eKQwn4U35DcdeOsN2UfVvA=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a3a9ef9000000001603dbcd?xsec_token=ABIm2RtHt8R7zxFDFNLO3X4eKQwn4U35DcdeOsN2UfVvA=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a3a4d6d0000000006030487?xsec_token=ABIm2RtHt8R7zxFDFNLO3X4dzn60AlzkxL895XOWhOQoA=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">Momenta-多模态大模型算法实习生面经
+自我介绍
+问项目，包括lora的r和alpha怎么设置，数据集怎么构建，为什么用qwen-vl做而不是小模型
+上段实习介绍和询问
+介绍自己一篇论文并提问
+问如何做到多论文在投，自己如何规划
+介绍自…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@天天向上</span>
+        <span title="发布时间">🕒 发布 2026-06-23 17:10</span>
+        <span title="点赞">❤ 21</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:28</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a3a4d6d0000000006030487?xsec_token=ABIm2RtHt8R7zxFDFNLO3X4dzn60AlzkxL895XOWhOQoA=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a3a4d6d0000000006030487?xsec_token=ABIm2RtHt8R7zxFDFNLO3X4dzn60AlzkxL895XOWhOQoA=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a390eec0000000021008b2d?xsec_token=ABKnYHZCcg7bRafQaEZwEcwNYiuuDC9SqFt-WF5lG4f6I=&amp;xsec_source=pc_search" target="_blank" rel="noopener">我已绝望我已崩溃，字节ai大模型怎么这么难</a>
+      <div class="card-desc">本人是27届零基础转行，因为现在ai浪潮很大，也是准备了一个多月了，一面已经过了，信心满满去了二面结果今天面试官一开口我就懵了。。。
+	
+问的好多问题我都感觉特别熟悉，项目课上一定学过，但当场就是说不明白，讲了一半卡住了，出来之后整个人是麻…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 后端</span></div>
+      <div class="card-meta">
+        <span title="作者">@一分萌九分坏</span>
+        <span title="发布时间">🕒 发布 2026-06-22 18:31</span>
+        <span title="点赞">❤ 73</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:23</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a390eec0000000021008b2d?xsec_token=ABKnYHZCcg7bRafQaEZwEcwNYiuuDC9SqFt-WF5lG4f6I=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a390eec0000000021008b2d?xsec_token=ABKnYHZCcg7bRafQaEZwEcwNYiuuDC9SqFt-WF5lG4f6I=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a36061f000000000803f101?xsec_token=ABzCwsB571pPxLlrYTOyQFWnYTUjoSuN9VdJGHFi9BVyQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener">信也科技大模型算法实习</a>
+      <div class="card-desc">3.27一面
+1.#大模型[话题]# #算法[话题]# #校招[话题]# #面经[话题]#
+1.项目
+[一R]数据集有多大？模型的架构是什么样的？模型大小？模型性能如何？微调之后有什么收益？
+[二R]lora秩的选取，原始模型的维度是多大？…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@只想躺平</span>
+        <span title="发布时间">🕒 发布 2026-06-20 11:16</span>
+        <span title="点赞">❤ 12</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:27:46</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a36061f000000000803f101?xsec_token=ABzCwsB571pPxLlrYTOyQFWnYTUjoSuN9VdJGHFi9BVyQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a36061f000000000803f101?xsec_token=ABzCwsB571pPxLlrYTOyQFWnYTUjoSuN9VdJGHFi9BVyQ=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a341119000000000f004ac9?xsec_token=ABQYIFWcuAUhbRfLzkk1GXGtam3m2zLDZVNm8ICRT_o7I=&amp;xsec_source=pc_search" target="_blank" rel="noopener">滴滴算法实习面经｜已OC</a>
+      <div class="card-desc">两轮技术面，整体体验很好，面试官都很耐心，会顺着项目一直追问。感觉不是那种单纯背八股的面试，更看重项目的理解，细节有没有想清楚。
+一面
+大概 50min，主要围绕简历项目展开。
+因为项目里有大模型后训练和多模态相关内容，所以八股问得比较集中…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 滴滴</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@w</span>
+        <span title="发布时间">🕒 发布 2026-06-18 23:39</span>
+        <span title="点赞">❤ 107</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:09</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a341119000000000f004ac9?xsec_token=ABQYIFWcuAUhbRfLzkk1GXGtam3m2zLDZVNm8ICRT_o7I=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a341119000000000f004ac9?xsec_token=ABQYIFWcuAUhbRfLzkk1GXGtam3m2zLDZVNm8ICRT_o7I=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a338cae0000000015024b8c?xsec_token=AB3HQ_h1MSlzW8KBIBpm--tKdVqXHtknZu9_K-ofcjBMs=&amp;xsec_source=pc_search" target="_blank" rel="noopener">分享一下大模型实习岗相关的经历和感受</a>
+      <div class="card-desc">主包背景：双非本，华五硕，目前研0
+第一段实习：
+去年九月结束保研后，十月便找到了一个小厂基模组算法实习岗。业务方面，感觉每天有干不完的活，大多也就是洗数据的dirty work，mentor也说目前行业70％的活都是在做数据相关的内容，自…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Lemon</span>
+        <span title="发布时间">🕒 发布 2026-06-18 14:14</span>
+        <span title="点赞">❤ 166</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:30</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a338cae0000000015024b8c?xsec_token=AB3HQ_h1MSlzW8KBIBpm--tKdVqXHtknZu9_K-ofcjBMs=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a338cae0000000015024b8c?xsec_token=AB3HQ_h1MSlzW8KBIBpm--tKdVqXHtknZu9_K-ofcjBMs=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a2ccd3e0000000022015a05?xsec_token=ABQPJeTAtu3_wxr9sFsXg5f-X_MlWwC3gsgZvRbgQElMQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener">高德大模型一面面经（已OC）</a>
+      <div class="card-desc">6.10 高德大模型一面
+1.自我介绍
+2.项目是开源的还是自己做的
+3.cpt（增量预训练）与sft的区别
+4.sft的损失函数是什么，具体是怎么样的
+5.logits在模型中是怎么计算的
+6.在实际训练时，一个batch有很多样本，怎么…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@yeeee</span>
+        <span title="发布时间">🕒 发布 2026-06-13 11:23</span>
+        <span title="点赞">❤ 77</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:39</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a2ccd3e0000000022015a05?xsec_token=ABQPJeTAtu3_wxr9sFsXg5f-X_MlWwC3gsgZvRbgQElMQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a2ccd3e0000000022015a05?xsec_token=ABQPJeTAtu3_wxr9sFsXg5f-X_MlWwC3gsgZvRbgQElMQ=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a2bd9820000000007023fc0?xsec_token=ABEojgtsPOa8vaJru-XmtK77TMnXHAyYr42BeXeT61ouw=&amp;xsec_source=pc_search" target="_blank" rel="noopener">蔚来大模型算法面经</a>
+      <div class="card-desc">5月面试的一个算法岗，具体部门不太了解，全程40min，无手撕，偏项目+数据，一轮面试，1.5h后oc
+没有做制造业agent的想法，拒。
+制造业agent岗位推荐：cxmt，但是bar太高，简历直塞给老板也塞不进去[捂脸R]
+1.自我介绍…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 蔚来</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@目标成为奥特曼</span>
+        <span title="发布时间">🕒 发布 2026-06-12 18:03</span>
+        <span title="点赞">❤ 37</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:22:48</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a2bd9820000000007023fc0?xsec_token=ABEojgtsPOa8vaJru-XmtK77TMnXHAyYr42BeXeT61ouw=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a2bd9820000000007023fc0?xsec_token=ABEojgtsPOa8vaJru-XmtK77TMnXHAyYr42BeXeT61ouw=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a2abb2a000000003502459b?xsec_token=ABeWgnTedZ2LPU9XxFLeREh3PoGHDvagX1vVnryJJV3rU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">【2026年6月面试复盘】面 Agent 岗的这段日子</a>
+      <div class="card-desc">持续更新训练营同学面经，以下是同学面试经验脱敏整理后内容：
+主要问：东西跑起来没有，有没有人真在用，你清不清楚它的边界在哪。
+	
+#大模型[话题]# #人工智能发展[话题]# #人工智能就业[话题]# #多模态人工智能[话题]# #互联网大…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@DailyLLM</span>
+        <span title="发布时间">🕒 发布 2026-06-11 21:42</span>
+        <span title="点赞">❤ 245</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:06</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a2abb2a000000003502459b?xsec_token=ABeWgnTedZ2LPU9XxFLeREh3PoGHDvagX1vVnryJJV3rU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a2abb2a000000003502459b?xsec_token=ABeWgnTedZ2LPU9XxFLeREh3PoGHDvagX1vVnryJJV3rU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a24db7d0000000007010813?xsec_token=ABrGmbYiG2Awndx29tZqTGKMGrH-Si2RXKcfWE3SN7jfk=&amp;xsec_source=pc_search" target="_blank" rel="noopener">面大模型岗，评测这一块答不好直接挂</a>
+      <div class="card-desc"></div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@海云日记</span>
+        <span title="发布时间">🕒 发布 2026-06-07 10:46</span>
+        <span title="点赞">❤ 15</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:10</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a24db7d0000000007010813?xsec_token=ABrGmbYiG2Awndx29tZqTGKMGrH-Si2RXKcfWE3SN7jfk=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a24db7d0000000007010813?xsec_token=ABrGmbYiG2Awndx29tZqTGKMGrH-Si2RXKcfWE3SN7jfk=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a21390c00000000360334c5?xsec_token=AB3J5pSADzDJPZ9VmrTBUGsu-tXDP7E_yh0ia_b6oa0C8=&amp;xsec_source=pc_search" target="_blank" rel="noopener">2026年最新大厂大模型岗位面经总结分享</a>
+      <div class="card-desc">只会背八股不够了；
+只会调 API 也不够了；
+只会说“我微调过模型”更不够。
+真正有竞争力的候选人，需要同时具备：
+扎实的模型基础；
+对前沿方法的理解；
+真实项目落地经验；
+数据、训练、推理、评测全链路意识；
+能把技术方案和业务结果讲清楚…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@木子树ll</span>
+        <span title="发布时间">🕒 发布 2026-06-04 16:36</span>
+        <span title="点赞">❤ 35</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:22</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a21390c00000000360334c5?xsec_token=AB3J5pSADzDJPZ9VmrTBUGsu-tXDP7E_yh0ia_b6oa0C8=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a21390c00000000360334c5?xsec_token=AB3J5pSADzDJPZ9VmrTBUGsu-tXDP7E_yh0ia_b6oa0C8=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a203eaf000000003601df77?xsec_token=ABog1qiP7Kgf-_0WM7ZiljiJap5Gbbm8WPQS7AR6kc_8k=&amp;xsec_source=pc_search" target="_blank" rel="noopener">美团 多模态大模型算法 面经</a>
+      <div class="card-desc">🕓 时间线
+4.19 官网投递
+4.28 技术一面
+拿到字节、阿里offer后，主动放弃二面
+✅ 一面
+项目拷打：
+目前只记得的一个问题了，评测数据集怎么设计的、如何保证数据集的多样性
+八股：
+1. 模型训练中遇到过哪些问题，如何解决的
+​…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-company">🏢 美团</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@梦</span>
+        <span title="发布时间">🕒 发布 2026-06-03 22:48</span>
+        <span title="点赞">❤ 30</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:46</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a203eaf000000003601df77?xsec_token=ABog1qiP7Kgf-_0WM7ZiljiJap5Gbbm8WPQS7AR6kc_8k=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a203eaf000000003601df77?xsec_token=ABog1qiP7Kgf-_0WM7ZiljiJap5Gbbm8WPQS7AR6kc_8k=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a203ab4000000003603275f?xsec_token=ABog1qiP7Kgf-_0WM7ZiljiHA1k2pnC-21yO9mV7Bj73o=&amp;xsec_source=pc_search" target="_blank" rel="noopener">网易 大模型算法 面经</a>
+      <div class="card-desc">⏱️时间线
+	
+投递渠道：Boss直聘
+4.30 一面
+面试结束后两个工作日 正式OC
+	
+✅一面
+	
+项目拷打
+	
+吐槽：本人有一个医学强化学习的项目，面试官说他这几天看了一篇最新发表的Med-R1论文，问我看没看过，对比我项目所用方法与…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 网易</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@梦</span>
+        <span title="发布时间">🕒 发布 2026-06-03 22:31</span>
+        <span title="点赞">❤ 11</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:57</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a203ab4000000003603275f?xsec_token=ABog1qiP7Kgf-_0WM7ZiljiHA1k2pnC-21yO9mV7Bj73o=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a203ab4000000003603275f?xsec_token=ABog1qiP7Kgf-_0WM7ZiljiHA1k2pnC-21yO9mV7Bj73o=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a1d3af4000000000803ee71?xsec_token=ABcUkS1DY3lsWROZgt8K05dNzJitGhRNxt3Zf7eZQDws0=&amp;xsec_source=pc_search" target="_blank" rel="noopener">Agent评测实习生</a>
+      <div class="card-desc">日常实习 职位描述
+1.参与 Agent Harness 核心模块的算法化升级，协助设计基于 LLM 的动态规划、反思与纠错机制，通过 APO提升 Agent 在复杂任务中的鲁棒性与执行自由度；
+2.参与标准化自动化评测框架的研发与维护，协…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@从心科研的废斗</span>
+        <span title="发布时间">🕒 发布 2026-06-01 15:55</span>
+        <span title="点赞">❤ 64</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:36</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a1d3af4000000000803ee71?xsec_token=ABcUkS1DY3lsWROZgt8K05dNzJitGhRNxt3Zf7eZQDws0=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a1d3af4000000000803ee71?xsec_token=ABcUkS1DY3lsWROZgt8K05dNzJitGhRNxt3Zf7eZQDws0=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a1ac5900000000035026578?xsec_token=ABcQprlZzB6IMF15eucpll5DmG_M0tEnMQ7XwB55XGzC4=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型算法面试八股总结</a>
+      <div class="card-desc">体感面试官不太关注八股了[doge]，但整理出来希望能帮助有需要的同学
+主要分为llm训练，rl算法，agentic rl，infra，agent框架这几大类
+ps：仅供参考，面试主要围绕个人经历展开
+#大模型算法[话题]# #面经[话题]…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-company">🏢 腾讯</span><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-company">🏢 蚂蚁</span><span class="tag tag-company">🏢 小红书</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@momo无闻</span>
+        <span title="发布时间">🕒 发布 2026-05-30 19:10</span>
+        <span title="点赞">❤ 460</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:23</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a1ac5900000000035026578?xsec_token=ABcQprlZzB6IMF15eucpll5DmG_M0tEnMQ7XwB55XGzC4=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a1ac5900000000035026578?xsec_token=ABcQprlZzB6IMF15eucpll5DmG_M0tEnMQ7XwB55XGzC4=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a1a8f7d0000000035021e33?xsec_token=ABcQprlZzB6IMF15eucpll5Btdf3NGIh19V3E0imW7GD8=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节实习 小荷健康面经</a>
+      <div class="card-desc">原本投的是检索策略岗，HR打电话了解我还要再医院实习一段时间后迅速地把我挂了。结果被这个岗捞起来面了一轮。具体面经如下：
+	
+1. 自我介绍
+2. 让我介绍和大模型相关的一段研究经历
+3. 怎么验证你的结果是正确和可靠的
+4. 基于你对模型…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Intermittentapathyoutbst</span>
+        <span title="发布时间">🕒 发布 2026-05-30 15:19</span>
+        <span title="点赞">❤ 143</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:25</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a1a8f7d0000000035021e33?xsec_token=ABcQprlZzB6IMF15eucpll5Btdf3NGIh19V3E0imW7GD8=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a1a8f7d0000000035021e33?xsec_token=ABcQprlZzB6IMF15eucpll5Btdf3NGIh19V3E0imW7GD8=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a165ef9000000003601ba95?xsec_token=ABf3ODbX5XREK5erNfq2UNrPvUHuE_sarP0UnZAyrupHI=&amp;xsec_source=pc_search" target="_blank" rel="noopener">懂车帝一面</a>
+      <div class="card-desc">打算简单记录下之前的面经攒人品，发出的均为凉经。先说懂车帝面试官人很好很尊重人，也能感觉到很专业。面试流程很完整，问的八股挺多的。
+	
+最开始自我介绍+问项目，项目比较关注训练，也说了希望实习生比较有训练经验。
+	
+八股：
+1. GRPO,…</div>
+      
+      <div class="card-meta">
+        <span title="作者">@momo</span>
+        <span title="发布时间">🕒 发布 2026-05-27 11:03</span>
+        <span title="点赞">❤ 40</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:38</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a165ef9000000003601ba95?xsec_token=ABf3ODbX5XREK5erNfq2UNrPvUHuE_sarP0UnZAyrupHI=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a165ef9000000003601ba95?xsec_token=ABf3ODbX5XREK5erNfq2UNrPvUHuE_sarP0UnZAyrupHI=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a0bdd93000000003502b951?xsec_token=ABAEGKtc6P0k-UUwTXI5uHQtBvVKKrzlv0EasvJEofh5c=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节大模型测开实习一面45min😣</a>
+      <div class="card-desc">5.18号下午3—4点
+1、自我介绍
+2、盘问实习经历
+3、盘问项目一
+4、实习-项目循环问
+5、选一个实习或项目中遇到的最大困难以及如何解决的
+6、反问环节
+整体交流比较舒服，没有那种很压力人的感觉
+少八股，无手撕
+	
+晚上七点收到面试体…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 测开</span></div>
+      <div class="card-meta">
+        <span title="作者">@CristianoLi_</span>
+        <span title="发布时间">🕒 发布 2026-05-19 11:48</span>
+        <span title="点赞">❤ 16</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:27</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a0bdd93000000003502b951?xsec_token=ABAEGKtc6P0k-UUwTXI5uHQtBvVKKrzlv0EasvJEofh5c=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a0bdd93000000003502b951?xsec_token=ABAEGKtc6P0k-UUwTXI5uHQtBvVKKrzlv0EasvJEofh5c=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a07658c000000000702faf6?xsec_token=ABC7OCKF4equmMWIfgiLkWkSZnRQgoMA9B6iNtmBcCVSk=&amp;xsec_source=pc_search" target="_blank" rel="noopener">2026年5月  华为大模型实习面经</a>
+      <div class="card-desc">#面经[话题]# #大模型[话题]# #面试题[话题]#
+写面经攒人品
+四月上旬，应邀投的某部门多模态岗
+本人bg：IP9 科班本，CSP 300+，不要盒我
+本人倾向：只考虑实习，以学习为主
+有软挑奖，免机考（这里感谢相关负责人，一开始对…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 华为</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@nullptr</span>
+        <span title="发布时间">🕒 发布 2026-05-16 02:27</span>
+        <span title="点赞">❤ 53</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:34</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a07658c000000000702faf6?xsec_token=ABC7OCKF4equmMWIfgiLkWkSZnRQgoMA9B6iNtmBcCVSk=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a07658c000000000702faf6?xsec_token=ABC7OCKF4equmMWIfgiLkWkSZnRQgoMA9B6iNtmBcCVSk=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a0733b1000000000803d120?xsec_token=ABC7OCKF4equmMWIfgiLkWkQNvlxWIV7kE4DuqnoHkNNs=&amp;xsec_source=pc_search" target="_blank" rel="noopener">百度后训练大模型算法面经（oc）</a>
+      <div class="card-desc">一面
+1.ppl是什么？预训练阶段还有哪些概率计算公式？
+2.介绍mid train作用是什么？参数配置和前一步有什么区别？
+3.你的论文引入的冷启动和rl之间阶段是什么？详细介绍设计思路。
+4.介绍你的tag level和dapo区别
+5…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 百度</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@落叶带走秋风</span>
+        <span title="发布时间">🕒 发布 2026-05-15 22:54</span>
+        <span title="点赞">❤ 185</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:27:22</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a0733b1000000000803d120?xsec_token=ABC7OCKF4equmMWIfgiLkWkQNvlxWIV7kE4DuqnoHkNNs=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a0733b1000000000803d120?xsec_token=ABC7OCKF4equmMWIfgiLkWkQNvlxWIV7kE4DuqnoHkNNs=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a01aa00000000000803db16?xsec_token=ABIWJ0ArQzNhSjqnh7PU-8Cg3UZCn6L8W6Laus6u1BYbI=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节，国际化内容安全平台大模型算法面经</a>
+      <div class="card-desc">无手撕不知道是不是凉了</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@给蹲哥一个机会吧</span>
+        <span title="发布时间">🕒 发布 2026-05-11 18:05</span>
+        <span title="点赞">❤ 75</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:38</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a01aa00000000000803db16?xsec_token=ABIWJ0ArQzNhSjqnh7PU-8Cg3UZCn6L8W6Laus6u1BYbI=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a01aa00000000000803db16?xsec_token=ABIWJ0ArQzNhSjqnh7PU-8Cg3UZCn6L8W6Laus6u1BYbI=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6a0033e7000000000803e9cf?xsec_token=ABj1WtqWMmW_QP7VU_gHOkV0yLgMhEcaL9VL56DGk3ru8=&amp;xsec_source=pc_search" target="_blank" rel="noopener">DeepSeek 暑期实习 一面挂+失忆版</a>
+      <div class="card-desc">Timeline
+- 三月中旬投递？（应该吧，忘记了）
+- 一周后笔试
+- 三天后一面
+- 默挂
+	
+笔试 3h（是的 3h）
+- 双机位
+- 单选 + 多选 + 填空 + 算法
+- 横跨 计组 计网 OS 大模型
+	
+一面 1.5h
+- …</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 深度求索</span><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 后端</span></div>
+      <div class="card-meta">
+        <span title="作者">@Gin</span>
+        <span title="发布时间">🕒 发布 2026-05-10 15:29</span>
+        <span title="点赞">❤ 150</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:29</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6a0033e7000000000803e9cf?xsec_token=ABj1WtqWMmW_QP7VU_gHOkV0yLgMhEcaL9VL56DGk3ru8=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6a0033e7000000000803e9cf?xsec_token=ABj1WtqWMmW_QP7VU_gHOkV0yLgMhEcaL9VL56DGk3ru8=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69fe9c7a0000000023005bd0?xsec_token=ABGTq0Caw8jlRkLSU6_Od1lqshP0rq8EDHPAJA2U2s84Y=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节大模型二面(贼难)</a>
+      <div class="card-desc">1.介绍一下transformer架构，它相比RNN和CNN在长依赖、并行计算和表达能力上分别解决了哪些核心问题？这些问题在真实业务中会带来什么影响?
+2.怎么理解词与词之间的距离？除了位置距离，还有哪些语义或关系上的距离？为什么大模型必须…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@A大厂直通车</span>
+        <span title="发布时间">🕒 发布 2026-05-09 10:31</span>
+        <span title="点赞">❤ 162</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:13</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69fe9c7a0000000023005bd0?xsec_token=ABGTq0Caw8jlRkLSU6_Od1lqshP0rq8EDHPAJA2U2s84Y=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69fe9c7a0000000023005bd0?xsec_token=ABGTq0Caw8jlRkLSU6_Od1lqshP0rq8EDHPAJA2U2s84Y=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69e76d75000000001f003155?xsec_token=ABmZ_83zdqCWXfUaB0Nf5q4-y4UccTU6qTtxeechTrU_4=&amp;xsec_source=pc_search" target="_blank" rel="noopener">虾皮大模型算法面经-电话告诉我锁hc没绷住</a>
+      <div class="card-desc">一面
+1. transformer 和 clip 原理，以及对齐层的原理
+2. clip 进阶模型有哪些，做到某个检索模型如何修改？
+3. transformer 模型 decoder有哪些？
+4. 预训练流程？你觉得预训练电商垂域有必要吗…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 推荐/搜索</span></div>
+      <div class="card-meta">
+        <span title="作者">@落叶带走秋风</span>
+        <span title="发布时间">🕒 发布 2026-04-21 20:28</span>
+        <span title="点赞">❤ 133</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:29</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69e76d75000000001f003155?xsec_token=ABmZ_83zdqCWXfUaB0Nf5q4-y4UccTU6qTtxeechTrU_4=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69e76d75000000001f003155?xsec_token=ABmZ_83zdqCWXfUaB0Nf5q4-y4UccTU6qTtxeechTrU_4=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69e72beb000000002102c8b1?xsec_token=ABmZ_83zdqCWXfUaB0Nf5q47iC8kyrNpbvEyMTeVs01q0=&amp;xsec_source=pc_search" target="_blank" rel="noopener">高德大模型算法日常实习一二面凉经</a>
+      <div class="card-desc">如题 感觉面试官主要是拷打项目 以及追着你所说的话去问 比较看重自己的理解 感觉比较看重手撕代码的部分 二面的手撕出了点问题 我写的没有按照q2的顺序输出 加上非科班的身份 被面试官说代码功底不行 慢慢来吧 #面经[话题]# #互联网大厂[…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Wasssssup</span>
+        <span title="发布时间">🕒 发布 2026-04-21 15:48</span>
+        <span title="点赞">❤ 127</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:44</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69e72beb000000002102c8b1?xsec_token=ABmZ_83zdqCWXfUaB0Nf5q47iC8kyrNpbvEyMTeVs01q0=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69e72beb000000002102c8b1?xsec_token=ABmZ_83zdqCWXfUaB0Nf5q47iC8kyrNpbvEyMTeVs01q0=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69e5fb020000000022001acd?xsec_token=ABbu5UyOEBfmS3y8hWWxNzB8v6ukVNRKpyTnSqnHi3BAA=&amp;xsec_source=pc_search" target="_blank" rel="noopener">荣耀暑期一面通过</a>
+      <div class="card-desc">主包投递的是大模型评测岗，说实话和本硕学的一点不沾边，一面一直在被面试官追问到底有没有相关经验疯狂拷打，然后主包尽己所能推销自己[石化R]感觉整个面试是一场牛头不对马嘴的唠嗑
+	
+本来没抱有希望的，上周五收到综合测评邮件后今天收到综面电话啦…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Riddle（找工作版）</span>
+        <span title="发布时间">🕒 发布 2026-04-20 18:08</span>
+        <span title="点赞">❤ 7</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:27:14</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69e5fb020000000022001acd?xsec_token=ABbu5UyOEBfmS3y8hWWxNzB8v6ukVNRKpyTnSqnHi3BAA=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69e5fb020000000022001acd?xsec_token=ABbu5UyOEBfmS3y8hWWxNzB8v6ukVNRKpyTnSqnHi3BAA=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69e0f369000000001b022c5b?xsec_token=ABYn1zx2x3Jk5HK8bI2w8Uw9D4UnVeFW5b5CUJNcZDc5I=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节大模型评测算法面经</a>
+      <div class="card-desc">字节大模型评测算法一面：
+1、介绍一下你的第一个项目，具体做了什么工作
+2、你提到数据增强的部分，你具体是怎么做的
+3、沙尘模拟具体是怎么实现的
+4、为什么选这三个数据增强手段
+5、讨论是用结果反推原因吗？回答当然不是，是先分析背景和痛点，…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@小红薯66EF45C7</span>
+        <span title="发布时间">🕒 发布 2026-04-16 22:34</span>
+        <span title="点赞">❤ 14</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:10</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69e0f369000000001b022c5b?xsec_token=ABYn1zx2x3Jk5HK8bI2w8Uw9D4UnVeFW5b5CUJNcZDc5I=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69e0f369000000001b022c5b?xsec_token=ABYn1zx2x3Jk5HK8bI2w8Uw9D4UnVeFW5b5CUJNcZDc5I=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69dcde4d0000000023023bfd?xsec_token=AB2rLBKO2R4v80_x5hxkZKGYb2GkVzTnii-SZW-SxRgOI=&amp;xsec_source=pc_search" target="_blank" rel="noopener">阶跃星辰大模型算法面经</a>
+      <div class="card-desc">阶跃星辰，还还是蛮想去的，具体原因类似智谱和minimax上市，挣到很多钱hhh，小登暑期也在这两家之一，觉得基模初创挺有潜力。可惜没要我
+	
+1. OCR中的校验环节是怎么做的，从工程化角度来看有什么收益
+2. prompt怎么设计的
+3…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 智谱</span><span class="tag tag-company">🏢 MiniMax</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@算法小登sfxd</span>
+        <span title="发布时间">🕒 发布 2026-04-13 20:15</span>
+        <span title="点赞">❤ 124</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:17</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69dcde4d0000000023023bfd?xsec_token=AB2rLBKO2R4v80_x5hxkZKGYb2GkVzTnii-SZW-SxRgOI=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69dcde4d0000000023023bfd?xsec_token=AB2rLBKO2R4v80_x5hxkZKGYb2GkVzTnii-SZW-SxRgOI=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69daf7ed000000001f00604f?xsec_token=ABk94KlNv5W1zayjf3RKPGBwD3SnpdZWsQwd1jPLct2i8=&amp;xsec_source=pc_search" target="_blank" rel="noopener">小红书智能客服大模型一面面经</a>
+      <div class="card-desc">1. 详细拷打实习经历
+2. PPO类算法对比
+3. 为什么用decoder-only
+4. 为什么kv-cache只能用在decoder-only模型上
+5. 目前大模型架构用pre-norm还是post-norm，为什么
+6. 介绍lo…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 小红书</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@手撕大灰狼</span>
+        <span title="发布时间">🕒 发布 2026-04-12 09:39</span>
+        <span title="点赞">❤ 101</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:57</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69daf7ed000000001f00604f?xsec_token=ABk94KlNv5W1zayjf3RKPGBwD3SnpdZWsQwd1jPLct2i8=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69daf7ed000000001f00604f?xsec_token=ABk94KlNv5W1zayjf3RKPGBwD3SnpdZWsQwd1jPLct2i8=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d9f3ba0000000021013a6e?xsec_token=ABAIRhDQ3i3BD899rGIXIP4Dy-tbF4tBDJB63T_Ifn9ec=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型近期面试感悟</a>
+      <div class="card-desc">最近面了7，8家，核心应用，基座（基本都给我挂了，明明去年还能过），创业都试过，感觉和去年确实不一样了，大模型溢价或许就在这一两年结束
+1.工程难度低于算法（随着基座越来越强，普通算法在做大模型应用的空间是被开发挤压的，开发做agent空间…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@毕业不迷茫</span>
+        <span title="发布时间">🕒 发布 2026-04-11 15:09</span>
+        <span title="点赞">❤ 461</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:36</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d9f3ba0000000021013a6e?xsec_token=ABAIRhDQ3i3BD899rGIXIP4Dy-tbF4tBDJB63T_Ifn9ec=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d9f3ba0000000021013a6e?xsec_token=ABAIRhDQ3i3BD899rGIXIP4Dy-tbF4tBDJB63T_Ifn9ec=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d9ef54000000001a030469?xsec_token=ABAIRhDQ3i3BD899rGIXIP4GbpOUOVsBLpZLiiKEqxzFk=&amp;xsec_source=pc_search" target="_blank" rel="noopener">百度一面凉经（大模型训推）</a>
+      <div class="card-desc">昨天中午也是不出意外的收到了字节的感谢信，宣告着一面失败[捂脸R]然后昨天下午又面了百度，目前体验最差的一场面试，从开始就上压力，整个过程感觉面试官就是一副完全瞧不起我的状态（虽然我确实很菜，但是这种体感真的很令人难受）（仅针对我这场面试，…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-company">🏢 百度</span><span class="tag tag-company">🏢 深度求索</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Yee🌴</span>
+        <span title="发布时间">🕒 发布 2026-04-11 14:51</span>
+        <span title="点赞">❤ 129</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:39</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d9ef54000000001a030469?xsec_token=ABAIRhDQ3i3BD899rGIXIP4GbpOUOVsBLpZLiiKEqxzFk=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d9ef54000000001a030469?xsec_token=ABAIRhDQ3i3BD899rGIXIP4GbpOUOVsBLpZLiiKEqxzFk=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d8c4040000000023024275?xsec_token=ABbp2Yktqg3EF7YW6fazTjBGoG-77LLJbzKzWJZgUBHXg=&amp;xsec_source=pc_search" target="_blank" rel="noopener">商汤大模型日常实习面经</a>
+      <div class="card-desc">3.20 一面
+4.2 二面
+4.8 hr口头offer
+	
+一面：
+手撕mha
+项目拷打穿插八股：
+flash attention原理？为什么更快？pagedattention原理。
+reward function怎么设计的？entrop…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 商汤</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@向北向北</span>
+        <span title="发布时间">🕒 发布 2026-04-10 17:33</span>
+        <span title="点赞">❤ 118</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:49</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d8c4040000000023024275?xsec_token=ABbp2Yktqg3EF7YW6fazTjBGoG-77LLJbzKzWJZgUBHXg=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d8c4040000000023024275?xsec_token=ABbp2Yktqg3EF7YW6fazTjBGoG-77LLJbzKzWJZgUBHXg=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d8c35c000000001d01c6f2?xsec_token=ABbp2Yktqg3EF7YW6fazTjBD4emyelFkeIp2qnRc2RYnc=&amp;xsec_source=pc_search" target="_blank" rel="noopener">小红书基座大模型后训练面经</a>
+      <div class="card-desc">跟面试官聊得很开心，给我出的手撕很简单。
+xhs的面试官是唯一不是小同行还能在短短几分钟内理解我的论文的人，强得可怕。
+由于大部分时间在讨论论文，所以没怎么问八股。
+	
+一面
+讨论论文
+在有多约束最大化问题上，如何通过reward的改进来让…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 小红书</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@天上的彤云</span>
+        <span title="发布时间">🕒 发布 2026-04-10 17:31</span>
+        <span title="点赞">❤ 378</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:39</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d8c35c000000001d01c6f2?xsec_token=ABbp2Yktqg3EF7YW6fazTjBD4emyelFkeIp2qnRc2RYnc=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d8c35c000000001d01c6f2?xsec_token=ABbp2Yktqg3EF7YW6fazTjBD4emyelFkeIp2qnRc2RYnc=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d50c7f000000001d018d6b?xsec_token=ABH8OvAoVMapzanThJWgRliJQHj_8r1EUWEEzDIGBcupo=&amp;xsec_source=pc_search" target="_blank" rel="noopener">本科字节seed一面面经（已通过</a>
+      <div class="card-desc">面试主要让我自己选一个项目来介绍，由于我这个是后训练的，所以我就讲的一个Agent RL的科研经历
+	
+整体面试比较偏压力面，面试官一直在拷打，但整体是针对科研的细节和idea，没有工程上的提问。
+	
+代码题：
+1. 给定正整数n 输出1-…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@卡夫卡的熊</span>
+        <span title="发布时间">🕒 发布 2026-04-07 21:54</span>
+        <span title="点赞">❤ 94</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:03</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d50c7f000000001d018d6b?xsec_token=ABH8OvAoVMapzanThJWgRliJQHj_8r1EUWEEzDIGBcupo=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d50c7f000000001d018d6b?xsec_token=ABH8OvAoVMapzanThJWgRliJQHj_8r1EUWEEzDIGBcupo=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d37c11000000001a028066?xsec_token=ABsaYZEzgrcgOrUl_NzdR4MOfSPulc1Edx1Inkff1Od-I=&amp;xsec_source=pc_search" target="_blank" rel="noopener">新鲜面经—通义实验室-大模型实习二面</a>
+      <div class="card-desc">1.自我介绍
+2.实习：难case、baseline、具体方案、你认为目前还有什么优化方向
+3.如果对话系统需要及时回答？应该怎么做？
+4.code：给列表套列表套列表，问这个array的shape，再分别写一下对每个axis求和的结果是什…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@蜡笔小七.</span>
+        <span title="发布时间">🕒 发布 2026-04-06 17:25</span>
+        <span title="点赞">❤ 70</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:15</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d37c11000000001a028066?xsec_token=ABsaYZEzgrcgOrUl_NzdR4MOfSPulc1Edx1Inkff1Od-I=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d37c11000000001a028066?xsec_token=ABsaYZEzgrcgOrUl_NzdR4MOfSPulc1Edx1Inkff1Od-I=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d23a88000000001b0022ad?xsec_token=ABubrBmG7YCpaSyQCxqX67ORzL0YoMHeyBk7iH5X-TALs=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型AI Infra面经💥LLM推理指标必考考点</a>
+      <div class="card-desc">面AI Infra岗，被LLM推理性能指标必知必会，从TTFT到Goodput，全程被面试官追着问
+	
+📌 必考核心指标
+❶ TTFT（首字响应时间）
+从发请求到生成第一个token的时间，用户体感第一指标！
+💡答题点：聊天&lt;500m…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@小龙的AI🦐铺</span>
+        <span title="发布时间">🕒 发布 2026-04-05 18:33</span>
+        <span title="点赞">❤ 4</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:09</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d23a88000000001b0022ad?xsec_token=ABubrBmG7YCpaSyQCxqX67ORzL0YoMHeyBk7iH5X-TALs=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d23a88000000001b0022ad?xsec_token=ABubrBmG7YCpaSyQCxqX67ORzL0YoMHeyBk7iH5X-TALs=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d103a2000000001a031064?xsec_token=ABc-5dEtVto2KXHjr-vejyTtXxW1OY8nSSUVvrJ90L6j0=&amp;xsec_source=pc_search" target="_blank" rel="noopener">新鲜面经—通义实验室大模型实习一面</a>
+      <div class="card-desc">1.自我介绍
+2.实习项目背景？rl阶段提升多少？用的训练资源？
+3.介绍在投论文？
+4.论文idea是自己想到的吗？
+5.有做过agent tool use的工作吗
+6.场景：给予用户给的图片解决某某问题，你怎么设计方案？
+7.要做age…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@蜡笔小七.</span>
+        <span title="发布时间">🕒 发布 2026-04-04 20:27</span>
+        <span title="点赞">❤ 98</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:17</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d103a2000000001a031064?xsec_token=ABc-5dEtVto2KXHjr-vejyTtXxW1OY8nSSUVvrJ90L6j0=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d103a2000000001a031064?xsec_token=ABc-5dEtVto2KXHjr-vejyTtXxW1OY8nSSUVvrJ90L6j0=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69d06222000000002202a15c?xsec_token=ABnj3vFQaFvRePjTpMxFDOegfOORB6FnaCvgos1z9xd-k=&amp;xsec_source=pc_search" target="_blank" rel="noopener">千问c端大模型算法实习一面</a>
+      <div class="card-desc">核心业务是做一些live场景下的应用，二面约的时间间隔太久，已经接了其他offer，所以结束了流程。以下是部分面试内容：
+	
+1.详细拷打实习经历
+2.ppl 怎么算，当模型输出趋于一致的时候ppl高还是低。
+3.讲解一下自己熟悉的模型的架…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@手撕大灰狼</span>
+        <span title="发布时间">🕒 发布 2026-04-04 08:58</span>
+        <span title="点赞">❤ 71</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:20</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69d06222000000002202a15c?xsec_token=ABnj3vFQaFvRePjTpMxFDOegfOORB6FnaCvgos1z9xd-k=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69d06222000000002202a15c?xsec_token=ABnj3vFQaFvRePjTpMxFDOegfOORB6FnaCvgos1z9xd-k=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69cfd189000000001f007f23?xsec_token=AB6ZsQFaMcMfP8XZ7k23LUj9dik6ZQ1eo-p1M2D4rpv20=&amp;xsec_source=pc_search" target="_blank" rel="noopener">智谱大模型秋招面经</a>
+      <div class="card-desc">一面
+	
+你论文里用了很多attention，qwen3和deepseek中用的什么样的attention，实现一下gqa或者mla，你这个gqa和qwen3中的gqa有一定区别，attention_mask具体是怎么实现的，介绍一下论文，…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 智谱</span><span class="tag tag-company">🏢 深度求索</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@不开心就喝水</span>
+        <span title="发布时间">🕒 发布 2026-04-03 22:41</span>
+        <span title="点赞">❤ 74</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:41</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69cfd189000000001f007f23?xsec_token=AB6ZsQFaMcMfP8XZ7k23LUj9dik6ZQ1eo-p1M2D4rpv20=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69cfd189000000001f007f23?xsec_token=AB6ZsQFaMcMfP8XZ7k23LUj9dik6ZQ1eo-p1M2D4rpv20=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69cfca15000000001a0266ec?xsec_token=AB6ZsQFaMcMfP8XZ7k23LUj-ewCmdbpps8Mx4JFSmP-EE=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">阿里国际-大模型
+Post Training 一面 很多没答出来面完秒挂
+	
+## 4/3 阿里国际-**大模型后训练**
+- 压力拉满，考得比较深，答了一个喜欢接着问
+- 问项目：
+- 为什么选择grpo不用sft，技术选型，什么时候用s…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Peter</span>
+        <span title="发布时间">🕒 发布 2026-04-03 22:09</span>
+        <span title="点赞">❤ 461</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:17</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69cfca15000000001a0266ec?xsec_token=AB6ZsQFaMcMfP8XZ7k23LUj-ewCmdbpps8Mx4JFSmP-EE=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69cfca15000000001a0266ec?xsec_token=AB6ZsQFaMcMfP8XZ7k23LUj-ewCmdbpps8Mx4JFSmP-EE=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69ce5a73000000001e00ea49?xsec_token=AB0DcpXYb4smPFcfhWMoAw46RJcr-Mf4_9sF1oe-VSGxU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">淘天AI算法暑期实习一面面经</a>
+      <div class="card-desc">今天面完淘天搜推团队的AI应用算法工程师实习岗，整整115分钟，是我面试以来时间最长的一场，中途有一刻真的感觉要大脑没token了😅 趁记忆还新鲜赶紧复盘。
+面试结构 ① 自我介绍（面试官也介绍了搜推团队的业务） ② 大模型基础知识问答（3…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@青萝团子</span>
+        <span title="发布时间">🕒 发布 2026-04-02 20:00</span>
+        <span title="点赞">❤ 537</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:29:02</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69ce5a73000000001e00ea49?xsec_token=AB0DcpXYb4smPFcfhWMoAw46RJcr-Mf4_9sF1oe-VSGxU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69ce5a73000000001e00ea49?xsec_token=AB0DcpXYb4smPFcfhWMoAw46RJcr-Mf4_9sF1oe-VSGxU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69cce73f0000000028009e40?xsec_token=ABmuLKZ3rrev8_LgyDC0VMOrluBHWUmlnuh4LEJIRxG1Q=&amp;xsec_source=pc_search" target="_blank" rel="noopener">百度大模型一面</a>
+      <div class="card-desc">流程：项目拷打+八股+手撕
+八股：
+1.grpo gspo dapo区别
+2.对多模态的了解
+3.dpo数据集的构建，怎么采样
+手撕：MHA
+	
+百度面试下来体验最差的一家了，三十分钟没到就结束了，完全kpi，没开摄像头，也没细问项目，反问…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 百度</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@momo</span>
+        <span title="发布时间">🕒 发布 2026-04-01 17:37</span>
+        <span title="点赞">❤ 13</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:16</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69cce73f0000000028009e40?xsec_token=ABmuLKZ3rrev8_LgyDC0VMOrluBHWUmlnuh4LEJIRxG1Q=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69cce73f0000000028009e40?xsec_token=ABmuLKZ3rrev8_LgyDC0VMOrluBHWUmlnuh4LEJIRxG1Q=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69ccdf08000000002301613d?xsec_token=ABmuLKZ3rrev8_LgyDC0VMOs2lZgrfCXKOSY_jKhEKaiE=&amp;xsec_source=pc_search" target="_blank" rel="noopener">通义凉经</a>
+      <div class="card-desc">tl：3.20投递-3.31面试-4.1 g
+流程：手撕-项目经历-个人意向-反问
+手撕：五道算法题，限时30分钟左右。题目：1.翻转链表 2.岛屿数量 3.任务调度器 4.moe并行处理 5.vllm
+项目经历：面试官倾听为主，没太拷打。…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@wjx</span>
+        <span title="发布时间">🕒 发布 2026-04-01 17:02</span>
+        <span title="点赞">❤ 81</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:27</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69ccdf08000000002301613d?xsec_token=ABmuLKZ3rrev8_LgyDC0VMOs2lZgrfCXKOSY_jKhEKaiE=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69ccdf08000000002301613d?xsec_token=ABmuLKZ3rrev8_LgyDC0VMOs2lZgrfCXKOSY_jKhEKaiE=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69cbee68000000001a02218e?xsec_token=ABZLF7ITt-oPXnJ_-7f5oeMZ0sT-NWPuiErqVMB5zZkNM=&amp;xsec_source=pc_search" target="_blank" rel="noopener">暑期腾讯一面面经</a>
+      <div class="card-desc">腾讯agent一面 体验超好
+只问项目没有八股，感觉面试官更感兴趣模型训练和优化
+1.追问项目细节并以此进行延伸，LLM部分是怎么设计的？
+2.有没有部署过大模型？
+3.项目中对话流程是什么？
+4.如果面试官和AI对话生成的问题冲突怎么办？…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 腾讯</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@日青</span>
+        <span title="发布时间">🕒 发布 2026-03-31 23:55</span>
+        <span title="点赞">❤ 128</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:35</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69cbee68000000001a02218e?xsec_token=ABZLF7ITt-oPXnJ_-7f5oeMZ0sT-NWPuiErqVMB5zZkNM=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69cbee68000000001a02218e?xsec_token=ABZLF7ITt-oPXnJ_-7f5oeMZ0sT-NWPuiErqVMB5zZkNM=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69c4bd0d00000000230223ec?xsec_token=ABqy3T_BaO0BelqmesJKY1qsqxepi_KNtQgXLE4kIXeRU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">依旧写面经，攒人品</a>
+      <div class="card-desc">1.自我介绍
+2.实习项目
+3.深挖实习项目，主要会问项目的难点，你做了哪些优化，整个项目是怎么思考的
+4.强化学习算法了解哪些
+5.为什么用verl框架
+6.了不了解当前智驾的vlm模型
+	
+无八股手撕，无压力
+感觉表现也挺好，都答上来了…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@鹅小子🐧🐧🐧</span>
+        <span title="发布时间">🕒 发布 2026-03-26 12:58</span>
+        <span title="点赞">❤ 22</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:31</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69c4bd0d00000000230223ec?xsec_token=ABqy3T_BaO0BelqmesJKY1qsqxepi_KNtQgXLE4kIXeRU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69c4bd0d00000000230223ec?xsec_token=ABqy3T_BaO0BelqmesJKY1qsqxepi_KNtQgXLE4kIXeRU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69c0b2e7000000002101076e?xsec_token=ABaYqiflddxtrunl3rL0rjAzXOrKIKda6I4JFQCB3eXt4=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">荣耀大模型算法一、二面面经
+流程是：投简历-笔试-一面-测评-二面-
+笔试应该是华为题库，应该做对一题就行
+一面技术面，问项目以及Transformer 原理，项目问的比较深，让讲算法架构、怎么优化，以及跟现在的大模型比你的针对这个方面的模…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 华为</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@tan90</span>
+        <span title="发布时间">🕒 发布 2026-03-23 11:26</span>
+        <span title="点赞">❤ 34</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:22</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69c0b2e7000000002101076e?xsec_token=ABaYqiflddxtrunl3rL0rjAzXOrKIKda6I4JFQCB3eXt4=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69c0b2e7000000002101076e?xsec_token=ABaYqiflddxtrunl3rL0rjAzXOrKIKda6I4JFQCB3eXt4=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69bbebb1000000002100557a?xsec_token=ABvY5qOxCOSKkYhVkIFjjzFFuORHuirmHvmhCGbk1-Tmg=&amp;xsec_source=pc_search" target="_blank" rel="noopener">面经第三期，大模型一面</a>
+      <div class="card-desc">智谱华章实习面经，1h
+1.自我介绍
+2.项目问答
+3. 问了些大模型八股，不过当时是本科，问的并不算难
+4. 手撕一个mid
+	
+#面经[话题]# #面试日常[话题]# #实习[话题]# #大模型[话题]# #大厂[话题]# #面试技巧[…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 智谱</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@一只站立的躺狗</span>
+        <span title="发布时间">🕒 发布 2026-03-20 20:27</span>
+        <span title="点赞">❤ 4</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:43</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69bbebb1000000002100557a?xsec_token=ABvY5qOxCOSKkYhVkIFjjzFFuORHuirmHvmhCGbk1-Tmg=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69bbebb1000000002100557a?xsec_token=ABvY5qOxCOSKkYhVkIFjjzFFuORHuirmHvmhCGbk1-Tmg=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69bce84c0000000021007791?xsec_token=ABLHB_tRaBW0h9PeDqBmuekr1HOFuCcKXFrFKvRNu27No=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节实习面试到底该不该参加😭</a>
+      <div class="card-desc">​​本人研一，由于最近有点实习焦虑就随便投了几份简历，其中投了字节好几个岗位（产品和ai应用类的）。本没抱希望，但没想到过了一两周竟然有hr打电话联系我，面试的岗位是我之前没投过的大模型评测算法实习生（Data Agent）。
+hr电话里和…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Ted</span>
+        <span title="发布时间">🕒 发布 2026-03-20 14:25</span>
+        <span title="点赞">❤ 2</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:36</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69bce84c0000000021007791?xsec_token=ABLHB_tRaBW0h9PeDqBmuekr1HOFuCcKXFrFKvRNu27No=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69bce84c0000000021007791?xsec_token=ABLHB_tRaBW0h9PeDqBmuekr1HOFuCcKXFrFKvRNu27No=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69ba7ebe000000001d01f092?xsec_token=ABkj3LIKC5DEadu0zaUrBdb7_ytzzBMED9lTfwhxwHSkc=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">1.自我介绍
+2.挑一个最难的项目讲
+3.拷打项目
+4.真实场景题，如何设计RL训练
+八股如下
+lora原理，为什么用lora
+MLA与MHA
+共享屏幕挑一个代码讲一下
+无手撕
+面试体验不错，面试官很nice
+	
+二面
+上来直接拷打项目
+然…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@鹅小子🐧🐧🐧</span>
+        <span title="发布时间">🕒 发布 2026-03-18 18:30</span>
+        <span title="点赞">❤ 64</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:15</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69ba7ebe000000001d01f092?xsec_token=ABkj3LIKC5DEadu0zaUrBdb7_ytzzBMED9lTfwhxwHSkc=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69ba7ebe000000001d01f092?xsec_token=ABkj3LIKC5DEadu0zaUrBdb7_ytzzBMED9lTfwhxwHSkc=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69b9cb8c000000002100573a?xsec_token=ABpltwOJlpsfpW7PI6fVfO9oY8nFuzH78DzYaBW7Yx2OM=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">其实这个号限流 应该不会太多人看到 就当记录一下
+一面3.12
+拷打项目45min
+8min撕code 题目很tricky 考二进制前缀和➕哈希
+我直接说双指针滑动窗口 面试官：可以了 回去再学一下吧..（只是不是最优解
+反问环节（二编：面…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 腾讯</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@balalauuoo</span>
+        <span title="发布时间">🕒 发布 2026-03-18 05:45</span>
+        <span title="点赞">❤ 172</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:31</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69b9cb8c000000002100573a?xsec_token=ABpltwOJlpsfpW7PI6fVfO9oY8nFuzH78DzYaBW7Yx2OM=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69b9cb8c000000002100573a?xsec_token=ABpltwOJlpsfpW7PI6fVfO9oY8nFuzH78DzYaBW7Yx2OM=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69b96250000000001b00205a?xsec_token=ABpltwOJlpsfpW7PI6fVfO9ogA9SgRBXxYVUN8DUpLnXw=&amp;xsec_source=pc_search" target="_blank" rel="noopener">腾讯大模型推理优化方向实习一面凉经</a>
+      <div class="card-desc">主包第一个面试就面腾讯，冲冲忙忙没有准备好。
+之前投的提前批高性能计算一直没有回应，后面3月初又投了一次，前几天收到面试邀请，被其他部门捞了，今天晚上面试。
+算法题比较简单，删除链表最后倒数第n个元素和LRU
+主要是拷打项目细节，但拷打的每…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 腾讯</span><span class="tag tag-company">🏢 百度</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@哈根达斯的杯具</span>
+        <span title="发布时间">🕒 发布 2026-03-17 22:16</span>
+        <span title="点赞">❤ 162</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:30</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69b96250000000001b00205a?xsec_token=ABpltwOJlpsfpW7PI6fVfO9ogA9SgRBXxYVUN8DUpLnXw=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69b96250000000001b00205a?xsec_token=ABpltwOJlpsfpW7PI6fVfO9ogA9SgRBXxYVUN8DUpLnXw=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69b76e8a00000000280084a4?xsec_token=ABH1tvFrrdfaSiCNKb-VoeD9PBJOF2wICiQB7kMJLdseM=&amp;xsec_source=pc_search" target="_blank" rel="noopener">一面已过✅拼多多大模型面经📚</a>
+      <div class="card-desc">#互联网大厂[话题]# #大模型[话题]# #秋招[话题]# #春招[话题]# #面经[话题]# #实习[话题]# #多模态[话题]# #大厂[话题]# #算法[话题]# #字节跳动[话题]#</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-company">🏢 拼多多</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@清华代码熊AI学院</span>
+        <span title="发布时间">🕒 发布 2026-03-16 10:44</span>
+        <span title="点赞">❤ 52</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:08</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69b76e8a00000000280084a4?xsec_token=ABH1tvFrrdfaSiCNKb-VoeD9PBJOF2wICiQB7kMJLdseM=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69b76e8a00000000280084a4?xsec_token=ABH1tvFrrdfaSiCNKb-VoeD9PBJOF2wICiQB7kMJLdseM=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69b3c3d1000000002003a720?xsec_token=ABlXDxw_hVHjOqKt6BIJFmczhjZ_TApBbD1Q14jKHckww=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节大模型面经</a>
+      <div class="card-desc">一面
+核心考察：DPO/SFT 原理、数据配比、Reward Hacking
+1.  DPO 与 SFT 的区别：两者核心差异是什么？可以先做 DPO 再做 SFT 吗？为什么？
+2.  把 DPO 用在“第一轮对话”，你会如何构建数据集？…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-company">🏢 深度求索</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@panda师兄的小助理</span>
+        <span title="发布时间">🕒 发布 2026-03-13 15:59</span>
+        <span title="点赞">❤ 39</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:51</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69b3c3d1000000002003a720?xsec_token=ABlXDxw_hVHjOqKt6BIJFmczhjZ_TApBbD1Q14jKHckww=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69b3c3d1000000002003a720?xsec_token=ABlXDxw_hVHjOqKt6BIJFmczhjZ_TApBbD1Q14jKHckww=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69abb437000000001a02b1da?xsec_token=ABu1uyJi8Il1sf8IImBSW0HZtIjhy0NSstUByGgXNzbXM=&amp;xsec_source=pc_search" target="_blank" rel="noopener">wxg大模型一面凉经</a>
+      <div class="card-desc">#大模型算法实习[话题]# #大模型[话题]# #大模型入门[话题]# #大模型学习[话题]# #大模型面试必看资料[话题]# #面经[话题]# #大模型面试经验[话题]# #大模型知识投喂[话题]# #大模型面试[话题]# #大模型学习资…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@梦吟</span>
+        <span title="发布时间">🕒 发布 2026-03-07 13:14</span>
+        <span title="点赞">❤ 40</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:05</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69abb437000000001a02b1da?xsec_token=ABu1uyJi8Il1sf8IImBSW0HZtIjhy0NSstUByGgXNzbXM=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69abb437000000001a02b1da?xsec_token=ABu1uyJi8Il1sf8IImBSW0HZtIjhy0NSstUByGgXNzbXM=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69ab8945000000001b014904?xsec_token=ABu1uyJi8Il1sf8IImBSW0HWwz87u0mcqeilvrwiK7cL4=&amp;xsec_source=pc_search" target="_blank" rel="noopener">百度大模型面经</a>
+      <div class="card-desc">自我介绍，讲项目
+1.介绍DPO和PPO
+2.DPO损失函数怎么算的
+3.梯度检查点如何提升效率
+4.详细讲一下deepseed
+5.以7B的模型为例，计算训练需要多少显存说明都有哪些部分，每部分怎么算的，以及用deepseed每一个阶段节…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-company">🏢 百度</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@長長</span>
+        <span title="发布时间">🕒 发布 2026-03-07 10:11</span>
+        <span title="点赞">❤ 61</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:03</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69ab8945000000001b014904?xsec_token=ABu1uyJi8Il1sf8IImBSW0HWwz87u0mcqeilvrwiK7cL4=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69ab8945000000001b014904?xsec_token=ABu1uyJi8Il1sf8IImBSW0HWwz87u0mcqeilvrwiK7cL4=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69aadc62000000001a01da33?xsec_token=ABx1eVWeA60hIQmc5bdjuOYcHAdFlxMkalrTxE6AxZYAk=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型日常实习面经，人品攒攒攒🙏</a>
+      <div class="card-desc">主包这两天半内面了两家大厂、两家中厂、一家初创，（初创公司的详细版面经在主包主页另一篇笔记）深深地感觉面试并认真复盘真的是改进自己的一个最有效的方法
+	
+项目很重要，只要不是一眼玩具的话，不会莫名其妙被问无关八股的，不要被卖资料的误导了，除…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@YCYCYCYC</span>
+        <span title="发布时间">🕒 发布 2026-03-06 21:53</span>
+        <span title="点赞">❤ 816</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:46</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69aadc62000000001a01da33?xsec_token=ABx1eVWeA60hIQmc5bdjuOYcHAdFlxMkalrTxE6AxZYAk=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69aadc62000000001a01da33?xsec_token=ABx1eVWeA60hIQmc5bdjuOYcHAdFlxMkalrTxE6AxZYAk=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69aa70a8000000001a01f4d4?xsec_token=ABx1eVWeA60hIQmc5bdjuOYW8BOyH96RPNksr4jmFhy1s=&amp;xsec_source=pc_search" target="_blank" rel="noopener">小公司LLM面经～</a>
+      <div class="card-desc">主要聊的项目穿插八股：
+1. 为什么选择xx模型,你能介绍一下这个模型的架构吗？也介绍一下transformer的架构？
+你选的这个模型的架构相比transformer区别是什么？这个是业界比较好的基座模型吗？为什么选择这么模型？结果有什么…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 NLP</span></div>
+      <div class="card-meta">
+        <span title="作者">@27秋招躺狗之魂</span>
+        <span title="发布时间">🕒 发布 2026-03-06 14:14</span>
+        <span title="点赞">❤ 21</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:27:30</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69aa70a8000000001a01f4d4?xsec_token=ABx1eVWeA60hIQmc5bdjuOYW8BOyH96RPNksr4jmFhy1s=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69aa70a8000000001a01f4d4?xsec_token=ABx1eVWeA60hIQmc5bdjuOYW8BOyH96RPNksr4jmFhy1s=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69a106ce00000000220387ed?xsec_token=ABqx7rBHB_fbprAF0Bp29e2kqyvH3llMCFKQhbYRjx_jc=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">自我介绍加拷打项目
+	
+问了如果给你很多GPU你会做什么？
+近期有没有什么Low hanging fruit可以摘?
+手撕ReAct
+	
+好像还有一俩个但是我忘了 几乎无八股
+	
+被挂了但是[哭惹R][哭惹R] 不知道哪地方没做好 不过手撕…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@我要读个书</span>
+        <span title="发布时间">🕒 发布 2026-02-27 10:51</span>
+        <span title="点赞">❤ 90</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:13</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69a106ce00000000220387ed?xsec_token=ABqx7rBHB_fbprAF0Bp29e2kqyvH3llMCFKQhbYRjx_jc=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69a106ce00000000220387ed?xsec_token=ABqx7rBHB_fbprAF0Bp29e2kqyvH3llMCFKQhbYRjx_jc=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69997875000000001b014ffd?xsec_token=ABKzh5J4qYv-AGtSj1mg59wicobOpZtK07MFcsk-H2Gcw=&amp;xsec_source=pc_search" target="_blank" rel="noopener">腾讯大模型面经</a>
+      <div class="card-desc">1.实习介绍
+2.大模型微调框架：您在微调大模型时使用过哪些框架（如LoRA、QLoRA等）？请结合实际场景说明选择依据。
+3.CLIP优化：CLIP模型的zero-shot能力是如何实现的？请从模型设计和训练策略角度分析，并提出改进其跨模…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 腾讯</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 NLP</span></div>
+      <div class="card-meta">
+        <span title="作者">@大模型师兄</span>
+        <span title="发布时间">🕒 发布 2026-02-21 17:18</span>
+        <span title="点赞">❤ 244</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:22:11</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69997875000000001b014ffd?xsec_token=ABKzh5J4qYv-AGtSj1mg59wicobOpZtK07MFcsk-H2Gcw=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69997875000000001b014ffd?xsec_token=ABKzh5J4qYv-AGtSj1mg59wicobOpZtK07MFcsk-H2Gcw=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69835ec10000000022021559?xsec_token=AB65-qymxr1akxmw-J8iG_6N1jhin8B_kT3V4i-LE7OaU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节生成式推荐面经</a>
+      <div class="card-desc">整体来看像是压力面，没有问到llm相关的东西。跟我在快手这边二面的强度差不多。第一次面这么核心的组，学到挺多东西。#搜广推实习[话题]#  #生成式推荐[话题]##互联网大厂[话题]# #暑期实习[话题]#</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-company">🏢 快手</span><span class="tag tag-position">💼 推荐/搜索</span></div>
+      <div class="card-meta">
+        <span title="作者">@难安</span>
+        <span title="发布时间">🕒 发布 2026-02-04 22:59</span>
+        <span title="点赞">❤ 59</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:10</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69835ec10000000022021559?xsec_token=AB65-qymxr1akxmw-J8iG_6N1jhin8B_kT3V4i-LE7OaU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69835ec10000000022021559?xsec_token=AB65-qymxr1akxmw-J8iG_6N1jhin8B_kT3V4i-LE7OaU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/697cd87d00000000220380f1?xsec_token=ABI2piyqZlfyOVjYa9wW2EUfaUoEltxEn_Tlw7VB44bkQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">秋招以来的ai面经问题all[扶墙R][扶墙R][扶墙R]
+	
+1. 为什么做Agent项目？
+2. 了解过市面上有哪些智能体agent吗
+3. 讲下Agent项目
+4. Agent项目开发的框架
+5. 介绍一些AI大模型
+6. RAG系统…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@mooomooom</span>
+        <span title="发布时间">🕒 发布 2026-01-31 00:12</span>
+        <span title="点赞">❤ 849</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:27:07</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/697cd87d00000000220380f1?xsec_token=ABI2piyqZlfyOVjYa9wW2EUfaUoEltxEn_Tlw7VB44bkQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/697cd87d00000000220380f1?xsec_token=ABI2piyqZlfyOVjYa9wW2EUfaUoEltxEn_Tlw7VB44bkQ=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/697cb628000000002202d31e?xsec_token=ABI2piyqZlfyOVjYa9wW2EUctpaie-d5QHObMmo4Ba-6Y=&amp;xsec_source=pc_search" target="_blank" rel="noopener">智谱大模型agent面经</a>
+      <div class="card-desc">项目深挖
+1. 训练参数设置&amp;资源配置细节
+2. DPO训练loss的直观含义（别讲公式！要大白话）
+3. 为啥不直接SFT，非要搞DPO？（核心是对齐效果差异）
+4. 负样本构造逻辑
+追问：长链路GUI下正负样本长度不一有啥影响？…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 智谱</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@大模型师兄</span>
+        <span title="发布时间">🕒 发布 2026-01-30 21:46</span>
+        <span title="点赞">❤ 119</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:52</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/697cb628000000002202d31e?xsec_token=ABI2piyqZlfyOVjYa9wW2EUctpaie-d5QHObMmo4Ba-6Y=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/697cb628000000002202d31e?xsec_token=ABI2piyqZlfyOVjYa9wW2EUctpaie-d5QHObMmo4Ba-6Y=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69788061000000000b0089db?xsec_token=AB3cXtyERDvcLS1Ut1zybA21ch5qs_bXC0cvUCRfKIdrM=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">大模型评测算法技术终面-阿里控股
+1. 设计构建通用基座模型或垂类领域评测pipeline
+	
+总结：本场面试很突然，二面就安排了技术终面和hrbp面试，措手不及
+二面后还会有大量的横向对比
+	
+Update:薪资沟通了</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@尤里乌斯</span>
+        <span title="发布时间">🕒 发布 2026-01-27 17:07</span>
+        <span title="点赞">❤ 9</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:09</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69788061000000000b0089db?xsec_token=AB3cXtyERDvcLS1Ut1zybA21ch5qs_bXC0cvUCRfKIdrM=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69788061000000000b0089db?xsec_token=AB3cXtyERDvcLS1Ut1zybA21ch5qs_bXC0cvUCRfKIdrM=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6971fcc9000000001a02b5f2?xsec_token=ABN_k_mydvLK4oTdEhJ80CCN6fWY6EZxfF0xtWomS4jrU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节大模型算法实习一二面（二面挂）</a>
+      <div class="card-desc">#互联网大厂[话题]# #互联网大厂实习[话题]# #深度学习[话题]# #算法[话题]# #面经[话题]# #大模型[话题]# #秋招人的精神状态[话题]#</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@ember</span>
+        <span title="发布时间">🕒 发布 2026-01-22 18:32</span>
+        <span title="点赞">❤ 484</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:27:38</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6971fcc9000000001a02b5f2?xsec_token=ABN_k_mydvLK4oTdEhJ80CCN6fWY6EZxfF0xtWomS4jrU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6971fcc9000000001a02b5f2?xsec_token=ABN_k_mydvLK4oTdEhJ80CCN6fWY6EZxfF0xtWomS4jrU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/696f399e000000000e03faa0?xsec_token=ABEvW1cK2U6RgdUzsMxnsPy9gZ-yKgCKOg6ROYDf22dJo=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">美团大模型算法日常一面，45min，全问的是项目一个agent一个rag，手撕三数之和，有一点小瑕疵但提醒之后过了。
+	
+蒽，开启漫长的横向。面试体验很不错👍
+更：已收到感谢信[黄金薯R]
+#互联网大厂[话题]# #面经[话题]#</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 美团</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@可以活到退休的吧</span>
+        <span title="发布时间">🕒 发布 2026-01-20 16:15</span>
+        <span title="点赞">❤ 207</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:03</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/696f399e000000000e03faa0?xsec_token=ABEvW1cK2U6RgdUzsMxnsPy9gZ-yKgCKOg6ROYDf22dJo=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/696f399e000000000e03faa0?xsec_token=ABEvW1cK2U6RgdUzsMxnsPy9gZ-yKgCKOg6ROYDf22dJo=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/696e51d9000000000d0081fd?xsec_token=ABiZhxE-bm17R8NIQk0ZqEV96vmWaadqZ5j3uoRMNMKaQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener">阶跃大模型研究性实习一面凉经</a>
+      <div class="card-desc">面试之前太忙了没背八股直接上，结果遇到的基本全是八股
+1. 详细讲一下tokenizer的过程
+2. sft具体是怎么实现的
+3. deepspeed，什么情况用zero1-3？
+4. qwen，llama这些模型modeling的代码是怎…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@waves</span>
+        <span title="发布时间">🕒 发布 2026-01-19 23:46</span>
+        <span title="点赞">❤ 133</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:42</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/696e51d9000000000d0081fd?xsec_token=ABiZhxE-bm17R8NIQk0ZqEV96vmWaadqZ5j3uoRMNMKaQ=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/696e51d9000000000d0081fd?xsec_token=ABiZhxE-bm17R8NIQk0ZqEV96vmWaadqZ5j3uoRMNMKaQ=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/696a42f3000000000e00daca?xsec_token=AB8Y5B3DxefVY36UH4-RgMRdj9KxWdk5OKLtLEgVrJ3G0=&amp;xsec_source=pc_search" target="_blank" rel="noopener">小红书大模型评测实习一面</a>
+      <div class="card-desc">#互联网大厂实习[话题]# #面试题[话题]# #大模型[话题]# #算法[话题]# #校招[话题]# #算法实习[话题]# #日常实习[话题]#</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 小红书</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@ember</span>
+        <span title="发布时间">🕒 发布 2026-01-16 21:53</span>
+        <span title="点赞">❤ 75</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:57</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/696a42f3000000000e00daca?xsec_token=AB8Y5B3DxefVY36UH4-RgMRdj9KxWdk5OKLtLEgVrJ3G0=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/696a42f3000000000e00daca?xsec_token=AB8Y5B3DxefVY36UH4-RgMRdj9KxWdk5OKLtLEgVrJ3G0=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69688dc6000000001a03073f?xsec_token=AB28CltjXdVpGlmU8h-IplGd8SO_NWe_s8ep4QgqVILI4=&amp;xsec_source=pc_search" target="_blank" rel="noopener">面经</a>
+      <div class="card-desc">1.手撕三数之和
+2.手撕零钱兑换
+3.DPO是用来干什么的，原理是什么？
+4.DPO的loss是怎么计算的？
+5.PPO中reward模型打分之后如何对不同样本进行排序？（Elo）
+6.用了几张卡跑的？
+7.用了什么显存优化的技术？
+8.…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 腾讯</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@koi</span>
+        <span title="发布时间">🕒 发布 2026-01-15 14:48</span>
+        <span title="点赞">❤ 148</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:59</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69688dc6000000001a03073f?xsec_token=AB28CltjXdVpGlmU8h-IplGd8SO_NWe_s8ep4QgqVILI4=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69688dc6000000001a03073f?xsec_token=AB28CltjXdVpGlmU8h-IplGd8SO_NWe_s8ep4QgqVILI4=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69636c89000000000b0101f2?xsec_token=ABhd8HprmRUAtc9l2DB2Urh9r_jkkWUJx-yWKp3LGJHvw=&amp;xsec_source=pc_search" target="_blank" rel="noopener">大模型评测算法值得去吗？</a>
+      <div class="card-desc">如图。博主bg:26应届某华五硕。最近在准备某手的大模型评测算法实习生岗位的面试，本人经历是有过好几段风控模型风控算法的实习，目前在🐻厂的一个算法岗位上做一些模型子分训练和多任务学习（应用场景还是风控），本来的打算是准备实习发起转正。但最近…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Last straw</span>
+        <span title="发布时间">🕒 发布 2026-01-11 17:25</span>
+        <span title="点赞">❤ 39</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:22</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69636c89000000000b0101f2?xsec_token=ABhd8HprmRUAtc9l2DB2Urh9r_jkkWUJx-yWKp3LGJHvw=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69636c89000000000b0101f2?xsec_token=ABhd8HprmRUAtc9l2DB2Urh9r_jkkWUJx-yWKp3LGJHvw=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/696206db000000002202e49b?xsec_token=ABs0LCUt2eVRqtT87AeNrI5TedxEUW99h91nlOUS8UDbk=&amp;xsec_source=pc_search" target="_blank" rel="noopener">接好运🙏面经分享|智谱GUI agent实习岗</a>
+      <div class="card-desc">📌 面试流程
+自我介绍（项目留坑后面细扒）→ 项目深追 → 八股问答 → 手撕代码
+	
+🔥 项目深挖
+1. 训练参数设置&amp;资源配置细节
+2. DPO训练loss的直观含义（别讲公式！要大白话）
+3. 为啥不直接SFT，非要搞DPO？…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 智谱</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@狸花不踩雪</span>
+        <span title="发布时间">🕒 发布 2026-01-10 15:59</span>
+        <span title="点赞">❤ 126</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:51</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/696206db000000002202e49b?xsec_token=ABs0LCUt2eVRqtT87AeNrI5TedxEUW99h91nlOUS8UDbk=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/696206db000000002202e49b?xsec_token=ABs0LCUt2eVRqtT87AeNrI5TedxEUW99h91nlOUS8UDbk=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/694e4fc4000000001e006851?xsec_token=ABYH0cc1WpdSMPDYzV7TTrutIhiFAujRtHo0kdpt-4jU8=&amp;xsec_source=pc_search" target="_blank" rel="noopener">阿里钉钉大模型面经</a>
+      <div class="card-desc">实习中怎么处理表格，流程图？
+	
+出现很多个跨页表格应该怎么处理？
+	
+聊聊BGE模型是怎么微调的，为什么要微调？
+多种检索方式用了哪些（只用了稠密检索，后面要考虑混合检索）
+	
+命中率怎么计算的，怎么评估模型的好坏？（先有相似度测试用例，…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@RRP</span>
+        <span title="发布时间">🕒 发布 2025-12-26 17:05</span>
+        <span title="点赞">❤ 5</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:59</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/694e4fc4000000001e006851?xsec_token=ABYH0cc1WpdSMPDYzV7TTrutIhiFAujRtHo0kdpt-4jU8=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/694e4fc4000000001e006851?xsec_token=ABYH0cc1WpdSMPDYzV7TTrutIhiFAujRtHo0kdpt-4jU8=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/693abc7b000000001e030261?xsec_token=ABvr7i8MWnG2DS9cPo5uRXZCm2qSl14dsXyRvptqvgwGs=&amp;xsec_source=pc_search" target="_blank" rel="noopener">(无标题)</a>
+      <div class="card-desc">今天面了一个大模型的
+一问三不知
+代码也没写出来[哭惹R][哭惹R][哭惹R]
+好难😭 但面试官人很好，给了很多建议</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@momo</span>
+        <span title="发布时间">🕒 发布 2025-12-11 20:43</span>
+        <span title="点赞">❤ 105</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:23</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/693abc7b000000001e030261?xsec_token=ABvr7i8MWnG2DS9cPo5uRXZCm2qSl14dsXyRvptqvgwGs=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/693abc7b000000001e030261?xsec_token=ABvr7i8MWnG2DS9cPo5uRXZCm2qSl14dsXyRvptqvgwGs=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6939616b000000001e021ad4?xsec_token=ABYNytDdQueXzloZxRkqrgqE0CzYbpDkWoA3QsiL_7BO4=&amp;xsec_source=pc_search" target="_blank" rel="noopener">某某初创小公司大模型算法面试</a>
+      <div class="card-desc">(由于主播太菜了，需要从小公司开始投实习刷经验)今天面试了一个初创小公司大模型算法，整体下来面试官基本拿着简历问，但是感觉也还是回答的一般，问精细一点就基本讲不清了，手撕的一道力扣medium题竟然都没能完全做出来(脑筋急转弯类型题目，还是…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@new_player</span>
+        <span title="发布时间">🕒 发布 2025-12-10 20:02</span>
+        <span title="点赞">❤ 174</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:22:25</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6939616b000000001e021ad4?xsec_token=ABYNytDdQueXzloZxRkqrgqE0CzYbpDkWoA3QsiL_7BO4=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6939616b000000001e021ad4?xsec_token=ABYNytDdQueXzloZxRkqrgqE0CzYbpDkWoA3QsiL_7BO4=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/69283473000000000d03fa82?xsec_token=ABcvdG07FLjjrcYRZfr6J9fhjUFOA3xJUV8B5B9tMz6JU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">月之暗面模型能力实习生一面凉经</a>
+      <div class="card-desc">#面经[话题]# #大模型[话题]# #找实习[话题]# #互联网大厂实习[话题]# #</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 月之暗面</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@嗨yoyo</span>
+        <span title="发布时间">🕒 发布 2025-11-27 19:22</span>
+        <span title="点赞">❤ 247</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:46</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/69283473000000000d03fa82?xsec_token=ABcvdG07FLjjrcYRZfr6J9fhjUFOA3xJUV8B5B9tMz6JU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/69283473000000000d03fa82?xsec_token=ABcvdG07FLjjrcYRZfr6J9fhjUFOA3xJUV8B5B9tMz6JU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/690f265000000000070095f1?xsec_token=AB3BWdenOtuQra5r_Q3Jod2aiq-AdMXkfxI3M9MfsB0bw=&amp;xsec_source=pc_search" target="_blank" rel="noopener">AI产品经理面试92： Agent的评估评测如何做？</a>
+      <div class="card-desc">回答框架
+1. 明确评测的核心目标：为什么要评测？为谁评测？
+2. 构建评测的指标体系：具体评测什么？（这是核心）
+3. 设计评测的流程与方法：怎么操作评测？
+4. 确保评测的落地与迭代：如何让评测产生价值？
+一、明确评测的核心目标
+在开始…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@AI产品经理Steven（求职陪跑版）</span>
+        <span title="发布时间">🕒 发布 2025-11-08 19:15</span>
+        <span title="点赞">❤ 335</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:22:18</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/690f265000000000070095f1?xsec_token=AB3BWdenOtuQra5r_Q3Jod2aiq-AdMXkfxI3M9MfsB0bw=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/690f265000000000070095f1?xsec_token=AB3BWdenOtuQra5r_Q3Jod2aiq-AdMXkfxI3M9MfsB0bw=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/690c4ea80000000004002ef7?xsec_token=ABuJ5g06eZYYhz8_1w6dkvTuyXXYqynD0p34tXWflvoqI=&amp;xsec_source=pc_search" target="_blank" rel="noopener">荣耀大模型面经</a>
+      <div class="card-desc">日常实习
+tl：
+10.28发测评
+10.30一面
+11.04二面
+	
+测评题目很奇怪，但是做的很差劲也过了
+每次面试都是半小时，难度不大，更注重实操能力</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@抱紧刺猬🦔</span>
+        <span title="发布时间">🕒 发布 2025-11-06 15:30</span>
+        <span title="点赞">❤ 54</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:22:37</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/690c4ea80000000004002ef7?xsec_token=ABuJ5g06eZYYhz8_1w6dkvTuyXXYqynD0p34tXWflvoqI=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/690c4ea80000000004002ef7?xsec_token=ABuJ5g06eZYYhz8_1w6dkvTuyXXYqynD0p34tXWflvoqI=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/690c080a0000000004020a04?xsec_token=ABuJ5g06eZYYhz8_1w6dkvTkwYAdlXpB0HKuf1LjO5O_M=&amp;xsec_source=pc_search" target="_blank" rel="noopener">360大模型面经(已oc)</a>
+      <div class="card-desc">日常实习
+一二面一起面，加起来十几分钟
+两天后oc
+	
+怀疑太缺人了，推荐大家都去投360[笑哭R]</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@抱紧刺猬🦔</span>
+        <span title="发布时间">🕒 发布 2025-11-06 10:29</span>
+        <span title="点赞">❤ 33</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:51</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/690c080a0000000004020a04?xsec_token=ABuJ5g06eZYYhz8_1w6dkvTkwYAdlXpB0HKuf1LjO5O_M=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/690c080a0000000004020a04?xsec_token=ABuJ5g06eZYYhz8_1w6dkvTkwYAdlXpB0HKuf1LjO5O_M=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/690afc5d000000000402944c?xsec_token=AB8-kvmbH6YbRUMzORXeJDKGO2gufoC-KtwKCHipzTcxM=&amp;xsec_source=pc_search" target="_blank" rel="noopener">阿里高德大模型面经(已oc)</a>
+      <div class="card-desc">日常实习
+tl：
+一面  10.30晚20点
+二面   11.03晚19点
+offer   11.04早上直接电话offer</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 阿里巴巴</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@抱紧刺猬🦔</span>
+        <span title="发布时间">🕒 发布 2025-11-05 15:27</span>
+        <span title="点赞">❤ 256</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:20:52</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/690afc5d000000000402944c?xsec_token=AB8-kvmbH6YbRUMzORXeJDKGO2gufoC-KtwKCHipzTcxM=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/690afc5d000000000402944c?xsec_token=AB8-kvmbH6YbRUMzORXeJDKGO2gufoC-KtwKCHipzTcxM=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6909f4260000000003020ea0?xsec_token=ABo7GrxgrlgiWLW2s-GWGRgH3VjETPfGWqgscVrK4k22w=&amp;xsec_source=pc_search" target="_blank" rel="noopener">盘点大模型/搜广推面试可能有的非力扣手撕</a>
+      <div class="card-desc">#深度学习[话题]# #算法[话题]# #大模型[话题]# #机器学习[话题]# #面经[话题]# #互联网[话题]# #互联网大厂[话题]#</div>
+      <div class="card-tags"><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span><span class="tag tag-position">💼 推荐/搜索</span></div>
+      <div class="card-meta">
+        <span title="作者">@菠萝芝士堡</span>
+        <span title="发布时间">🕒 发布 2025-11-04 20:40</span>
+        <span title="点赞">❤ 264</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:24:59</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6909f4260000000003020ea0?xsec_token=ABo7GrxgrlgiWLW2s-GWGRgH3VjETPfGWqgscVrK4k22w=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6909f4260000000003020ea0?xsec_token=ABo7GrxgrlgiWLW2s-GWGRgH3VjETPfGWqgscVrK4k22w=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6904d6020000000003021a5e?xsec_token=ABPdX2wxthrShT_v3IOz-_byPaM3x63c2MoO9NRcC0rbo=&amp;xsec_source=pc_search" target="_blank" rel="noopener">非常好的一次面试体验</a>
+      <div class="card-desc">中科闻歌大模型算法实习面经
+简历项目介绍
+大模型幻觉产生原因
+DPO，PPO，GRPO介绍一下
+transformer的max_position(应该说的是位置编码最大位置信息这个超参数)的影响
+手撕：开平方根
+总结：有史以来遇到的最好的面…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@九州</span>
+        <span title="发布时间">🕒 发布 2025-10-31 23:30</span>
+        <span title="点赞">❤ 22</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:22:03</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6904d6020000000003021a5e?xsec_token=ABPdX2wxthrShT_v3IOz-_byPaM3x63c2MoO9NRcC0rbo=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6904d6020000000003021a5e?xsec_token=ABPdX2wxthrShT_v3IOz-_byPaM3x63c2MoO9NRcC0rbo=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/6901bed80000000004020b34?xsec_token=AB_r946F2TcXc0rVEgQSJcYU7Mgf-hPG_cILGMLSPPn-8=&amp;xsec_source=pc_search" target="_blank" rel="noopener">秋招字节大模型 RAG面经-还行</a>
+      <div class="card-desc">一面
+简历
+对现在表格太长你有什么不一样的解决方案吗？ 表格转图片再问答
+你的长文本 PDF 的做法是什么，有什么之前由于技术局限现在能解决的？
+如何利用上下文信息加强VLM 问答效果？
+手撕 3 道题：字符串编辑距离简化版，超过一步为 f…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@落叶带走秋风</span>
+        <span title="发布时间">🕒 发布 2025-10-29 15:14</span>
+        <span title="点赞">❤ 72</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:11</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/6901bed80000000004020b34?xsec_token=AB_r946F2TcXc0rVEgQSJcYU7Mgf-hPG_cILGMLSPPn-8=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/6901bed80000000004020b34?xsec_token=AB_r946F2TcXc0rVEgQSJcYU7Mgf-hPG_cILGMLSPPn-8=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68fa16660000000003039cbb?xsec_token=ABTHJLSKZcxrPKTErwLBtnADY2vgz-r94dG15gB81qSe4=&amp;xsec_source=pc_search" target="_blank" rel="noopener">后训练人员误闯预训练团队</a>
+      <div class="card-desc">上海人工智能实验室大模型工程师面经-一面
+	
+1.直接写的代码题，非hot 100 难度中等，dfs可桥接版（还挺喜欢面试官的，跟我说题目的时候说了很久，解读题目的时候给了我思路）
+2.实习的项目
+3.internvl的发展路径
+4.q-f…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@小红薯5D0123DE</span>
+        <span title="发布时间">🕒 发布 2025-10-23 19:49</span>
+        <span title="点赞">❤ 12</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:26:04</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68fa16660000000003039cbb?xsec_token=ABTHJLSKZcxrPKTErwLBtnADY2vgz-r94dG15gB81qSe4=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68fa16660000000003039cbb?xsec_token=ABTHJLSKZcxrPKTErwLBtnADY2vgz-r94dG15gB81qSe4=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68dd18a50000000007016f13?xsec_token=AB6X7WbaSbAa2dTqevAyVRXQDguRznamQNLhk4c2RZhPY=&amp;xsec_source=pc_search" target="_blank" rel="noopener">实习面经 | 小鹏汽车大模型</a>
+      <div class="card-desc">一共35min，一个面试官
+先自我介绍，然后进行项目问答，然后有一个简单的coding，在本地ide上，lc100原题，mid
+	
+然后问了一些大模型相关的八股，peft和lora区别，介绍一下sft，以及实习时长等
+	
+最后的时候某某总还…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@一只站立的躺狗</span>
+        <span title="发布时间">🕒 发布 2025-10-01 20:03</span>
+        <span title="点赞">❤ 17</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:28:39</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68dd18a50000000007016f13?xsec_token=AB6X7WbaSbAa2dTqevAyVRXQDguRznamQNLhk4c2RZhPY=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68dd18a50000000007016f13?xsec_token=AB6X7WbaSbAa2dTqevAyVRXQDguRznamQNLhk4c2RZhPY=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68da4a27000000000e025564?xsec_token=ABKJb_GR_NG8yURYvhHa-rjFo-2TJlXHBs3h615VLWjUU=&amp;xsec_source=pc_search" target="_blank" rel="noopener">阶跃星辰code大模型一面</a>
+      <div class="card-desc">1. 拷打论文：motivation，负责哪些内容，具体遇到哪些问题，核心创新点，直观解释为什么方法有效等等
+2. 代码题：给定模型输出的logits和参数k，实现top_k采样，先选最大的k个token的索引，然后将这k个token的概率…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@pure</span>
+        <span title="发布时间">🕒 发布 2025-09-29 16:58</span>
+        <span title="点赞">❤ 74</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:18:33</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68da4a27000000000e025564?xsec_token=ABKJb_GR_NG8yURYvhHa-rjFo-2TJlXHBs3h615VLWjUU=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68da4a27000000000e025564?xsec_token=ABKJb_GR_NG8yURYvhHa-rjFo-2TJlXHBs3h615VLWjUU=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68d39e320000000014009242?xsec_token=ABMof1Lnf9WLpglfM8dmSPo_Y2XURr6VD5BI5G0dJtJYk=&amp;xsec_source=pc_search" target="_blank" rel="noopener">小红书 大模型 一面面经</a>
+      <div class="card-desc">这个岗位投的时候还叫llm工程师，等约面时候发现系统里改名叫基座llm工程师，给哥们吓一跳，哥们这水平哪有基座啊，好在面试官解释了这个岗位下也有团队在做后训练
+	
+拷打实习内容：
+拷打数据合成多样性如何保证；sft过程中的问题，grpo的r…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 小红书</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@且听风吟</span>
+        <span title="发布时间">🕒 发布 2025-09-24 15:30</span>
+        <span title="点赞">❤ 91</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:25:06</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68d39e320000000014009242?xsec_token=ABMof1Lnf9WLpglfM8dmSPo_Y2XURr6VD5BI5G0dJtJYk=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68d39e320000000014009242?xsec_token=ABMof1Lnf9WLpglfM8dmSPo_Y2XURr6VD5BI5G0dJtJYk=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68d1370e0000000012020975?xsec_token=ABBWoYceDuaSg2skWb7NlnHMUnGDT_WI-7kRX-x34CVZ8=&amp;xsec_source=pc_search" target="_blank" rel="noopener">腾讯混元大模型面经</a>
+      <div class="card-desc">实习面经，一共就问了一个工作，半个小时就over了，整体难度不高
+#大模型算法[话题]# #面经[话题]# #互联网大厂实习[话题]# #秋招[话题]#</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 腾讯</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Y.g.</span>
+        <span title="发布时间">🕒 发布 2025-09-22 19:46</span>
+        <span title="点赞">❤ 96</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:27:53</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68d1370e0000000012020975?xsec_token=ABBWoYceDuaSg2skWb7NlnHMUnGDT_WI-7kRX-x34CVZ8=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68d1370e0000000012020975?xsec_token=ABBWoYceDuaSg2skWb7NlnHMUnGDT_WI-7kRX-x34CVZ8=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68c90e4f000000001203e8fe?xsec_token=ABnkgBw0z6VPOLxBtrqltAhGfTUOrlRqv62XmlJcSTjz0=&amp;xsec_source=pc_search" target="_blank" rel="noopener">为什么就我的面试这么难</a>
+      <div class="card-desc">只记录我没答上或者答得不太好的问题。
+类似黑马点评项目，用了caffeine做本地缓存，问：你知道本地缓存可以用那个谷歌的guava cache吧，这二者有什么区别，为什么用caffeine，它解决了guava的什么问题？
+本地缓存的缓存一…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Aisuigetsu</span>
+        <span title="发布时间">🕒 发布 2025-09-16 15:14</span>
+        <span title="点赞">❤ 444</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:49</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68c90e4f000000001203e8fe?xsec_token=ABnkgBw0z6VPOLxBtrqltAhGfTUOrlRqv62XmlJcSTjz0=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68c90e4f000000001203e8fe?xsec_token=ABnkgBw0z6VPOLxBtrqltAhGfTUOrlRqv62XmlJcSTjz0=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="综合">
+      <div class="card-head"><span class="badge badge-other">综合</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68b6de22000000001d00ee66?xsec_token=ABNmgrwnGW6n9thze6UR9n2gMv0fvVgPtpj25JvRdxk24=&amp;xsec_source=pc_search" target="_blank" rel="noopener">小米大模型一面凉经</a>
+      <div class="card-desc">#面经[话题]# #大模型[话题]# #互联网大厂[话题]# 煮啵太菜了，压力巨大，狠狠沉淀去了。。</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 小米</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@佛跳墙畅饮</span>
+        <span title="发布时间">🕒 发布 2025-09-02 20:08</span>
+        <span title="点赞">❤ 314</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:19:51</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68b6de22000000001d00ee66?xsec_token=ABNmgrwnGW6n9thze6UR9n2gMv0fvVgPtpj25JvRdxk24=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68b6de22000000001d00ee66?xsec_token=ABNmgrwnGW6n9thze6UR9n2gMv0fvVgPtpj25JvRdxk24=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="八股题">
+      <div class="card-head"><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68af0ca4000000001b037061?xsec_token=ABE-usjGHgZAFJubhku7XUBJxZekj3Bs6UXpmrPmZojKo=&amp;xsec_source=pc_search" target="_blank" rel="noopener">美团‖大模型评测算法工程师面真题拆解分析</a>
+      <div class="card-desc">1. 假设你需要设计美团大模型的评测体系，如何构建多维度评估指标？
+1.1 追问1：你会关注哪些能力维度（如推理、安全、偏见）？
+1.2 追问2：如何自动化评测流程？
+2. 描述一次参与模型对比测试的经历，使用了什么评测数据集？
+3. 解释…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 美团</span><span class="tag tag-position">💼 大模型评测</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@哒哒兔求职（Offer版）</span>
+        <span title="发布时间">🕒 发布 2025-08-27 21:48</span>
+        <span title="点赞">❤ 176</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:17:04</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68af0ca4000000001b037061?xsec_token=ABE-usjGHgZAFJubhku7XUBJxZekj3Bs6UXpmrPmZojKo=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68af0ca4000000001b037061?xsec_token=ABE-usjGHgZAFJubhku7XUBJxZekj3Bs6UXpmrPmZojKo=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68a5cf2f000000001d02e4db?xsec_token=ABTJGvbsqdW1N0250dZjA5y-ilGDgxf4LfiQUCozrUIeA=&amp;xsec_source=pc_search" target="_blank" rel="noopener">京东 大模型 一面面经</a>
+      <div class="card-desc">京东大模型一面面经[扶额R]最近没休息好，面试前睡着了，还好上了铃提前10分钟醒了，起来迷迷糊糊的，面试过程都手揉着太阳穴，头好晕[睡觉R]
+全程1h左右，流程：
+自我介绍：头晕乎乎的，想到啥说啥了
+项目介绍：介绍一个做过的项目（这里因为头…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 京东</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@派大星（毕业版）</span>
+        <span title="发布时间">🕒 发布 2025-08-20 21:35</span>
+        <span title="点赞">❤ 76</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:43</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68a5cf2f000000001d02e4db?xsec_token=ABTJGvbsqdW1N0250dZjA5y-ilGDgxf4LfiQUCozrUIeA=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68a5cf2f000000001d02e4db?xsec_token=ABTJGvbsqdW1N0250dZjA5y-ilGDgxf4LfiQUCozrUIeA=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/689c3f51000000001c0106c7?xsec_token=ABn40rGhRUyAhesH9T4zYrB4ejiGzaq4yN3_0gmxpkjWE=&amp;xsec_source=pc_search" target="_blank" rel="noopener">淘天集团大模型面经分享</a>
+      <div class="card-desc">8.13一面
+1.拷问实习经历，中间会打断提问
+2.拷问论文，问的很细
+3.讲述GRPO的原理及优缺点
+4.为什么自回归模型每次输出token都要计算之前生成的token
+5.介绍transformers的qkv
+6.qwen3预训练用了多…</div>
+      <div class="card-tags"><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@赵既白</span>
+        <span title="发布时间">🕒 发布 2025-08-13 15:31</span>
+        <span title="点赞">❤ 86</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:29</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/689c3f51000000001c0106c7?xsec_token=ABn40rGhRUyAhesH9T4zYrB4ejiGzaq4yN3_0gmxpkjWE=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/689c3f51000000001c0106c7?xsec_token=ABn40rGhRUyAhesH9T4zYrB4ejiGzaq4yN3_0gmxpkjWE=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68949b020000000005005e74?xsec_token=ABZDe4_JSJ0XtpCCEXpKJDm4KQVuRP8b1lJ6JGXf4z_Ng=&amp;xsec_source=pc_search" target="_blank" rel="noopener">小红书大模型实习一面面经</a>
+      <div class="card-desc">1.自我介绍
+2.基于具体业务场景的思考延伸（
+3.项目介绍+拷打
+4.八股（大模型加速训练的方法（flash-attention，teacher forcing），常见的大模型解码策略（top-p，top-k））
+5.没手撕，面到这里已经…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 小红书</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Muse</span>
+        <span title="发布时间">🕒 发布 2025-08-07 20:24</span>
+        <span title="点赞">❤ 36</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:23:01</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68949b020000000005005e74?xsec_token=ABZDe4_JSJ0XtpCCEXpKJDm4KQVuRP8b1lJ6JGXf4z_Ng=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68949b020000000005005e74?xsec_token=ABZDe4_JSJ0XtpCCEXpKJDm4KQVuRP8b1lJ6JGXf4z_Ng=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/687156ef0000000012015085?xsec_token=ABwUcSW4oeMURIA4GNeQR505_Sn9Jfqd0Q9X7vOOaENfk=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节大模型面经-二面凉经（实习）</a>
+      <div class="card-desc">面对字节更应该苦练基本功[哭惹R][哭惹R]发面经攒人品
+	
+自我介绍
+介绍论文核心创新点
+业务function call数据构造与训练细节，遇到问题和解决方法
+手撕公式和伪代码：
+对比学习loss：三元组损失，直接对比损失
+熵，交叉熵，K…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 算法工程师</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Raindrop</span>
+        <span title="发布时间">🕒 发布 2025-07-12 02:24</span>
+        <span title="点赞">❤ 46</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:23</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/687156ef0000000012015085?xsec_token=ABwUcSW4oeMURIA4GNeQR505_Sn9Jfqd0Q9X7vOOaENfk=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/687156ef0000000012015085?xsec_token=ABwUcSW4oeMURIA4GNeQR505_Sn9Jfqd0Q9X7vOOaENfk=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+
+    <div class="card" data-cats="手撕算法题 八股题">
+      <div class="card-head"><span class="badge badge-coding">手撕算法题</span><span class="badge badge-bagu">八股题</span></div>
+      <a class="card-title" href="https://www.xiaohongshu.com/explore/68668e6600000000100131a6?xsec_token=ABRr5QHKDNeeSELk-EGo4DN02F-1TwDj0fyUvTqUrFB10=&amp;xsec_source=pc_search" target="_blank" rel="noopener">字节电商大模型面经（实习）</a>
+      <div class="card-desc">发面经攒一波人品！！！希望后面的学业和求职一切顺利[蹲后续H][蹲后续H]
+1. 自我介绍
+2. 概括之前的实习，从模型训练中学到了什么
+3. 强化学习业务应用探索过程拷打
+4. DPO,PPO,GRPO 主要思想和细节
+5. 各个阶段中，…</div>
+      <div class="card-tags"><span class="tag tag-company">🏢 字节跳动</span><span class="tag tag-position">💼 大模型算法</span><span class="tag tag-position">💼 LLM</span></div>
+      <div class="card-meta">
+        <span title="作者">@Raindrop</span>
+        <span title="发布时间">🕒 发布 2025-07-03 22:06</span>
+        <span title="点赞">❤ 43</span>
+      </div>
+      <div class="card-prov">
+        <span title="来源搜索关键词">🔍 来源：大模型评测面经</span>
+        <span title="抓取时间戳">⏱ 抓取：2026-06-28 16:21:00</span>
+      </div>
+      <div class="card-foot">
+        <a class="open-link" href="https://www.xiaohongshu.com/explore/68668e6600000000100131a6?xsec_token=ABRr5QHKDNeeSELk-EGo4DN02F-1TwDj0fyUvTqUrFB10=&amp;xsec_source=pc_search" target="_blank" rel="noopener" title="https://www.xiaohongshu.com/explore/68668e6600000000100131a6?xsec_token=ABRr5QHKDNeeSELk-EGo4DN02F-1TwDj0fyUvTqUrFB10=&amp;xsec_source=pc_search">打开完整笔记 ↗</a>
+      </div>
+    </div>
+</div>
+
+<script>
+  // Tab 切换：根据卡片 data-cats 是否包含目标分类来显示/隐藏
+  const tabs = document.querySelectorAll('.tab');
+  const cards = document.querySelectorAll('.card');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const f = tab.dataset.filter;
+      cards.forEach(c => {
+        const cats = c.dataset.cats || '';
+        c.style.display = (f === '全部' || cats.indexOf(f) !== -1) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>

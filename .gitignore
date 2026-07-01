@@ -1,0 +1,23 @@
+# ===== 敏感:登录凭证,绝对不能上传 =====
+xhs_storage_state.json
+*.plist
+
+# ===== 爬取的数据 / 本地归档,不上传 =====
+data/
+archive/
+
+# ===== 日志 =====
+*.log
+
+# ===== Python =====
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+
+# ===== 编辑器 / 系统 / 本地配置 =====
+.claude/
+.DS_Store
+.idea/
+.vscode/
