@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 看板渲染脚本
-作者：施晔  学号：2362404008
 
 功能：
     读取 data/all_notes.json，渲染成一个自包含（无外部依赖）的 HTML 看板。
@@ -192,8 +191,7 @@ def render():
   <h1>大模型 / LLM 面经看板</h1>
   <div class="sub">
     共 {total} 条 ｜ 八股题 {n_bagu} ｜ 手撕算法题 {n_coding} ｜ 综合 {n_other}
-    ｜ 生成时间 {gen_time} ｜ 作者：施晔(2362404008)
-  </div>
+    ｜ 生成时间 {gen_time}  </div>
 </header>
 
 <div class="tabs">

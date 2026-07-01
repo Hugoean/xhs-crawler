@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 面经题库静态 HTML 生成器（服务端渲染，零 JS 依赖，绝不变骨架）
-作者：施晔 2362404008
 读取：data/题库数据D.json（80题）、data/手撕题映射.json、data/手撕占比统计.json
 输出：实习面试准备/大模型评测_面经题库.html
 """
@@ -217,7 +216,7 @@ HTML = f"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>大模型评测岗 · 面经题库</title><style>{CSS}</style></head><body>
 <div class="layout">
-<nav class="sidebar"><h1>📚 大模型评测面经题库</h1><div class="sub">100篇面经 · {len(questions)}题去重 · 施晔</div>{nav}</nav>
+<nav class="sidebar"><h1>📚 大模型评测面经题库</h1><div class="sub">100篇面经 · {len(questions)}题去重</div>{nav}</nav>
 <main class="main"><div class="wrap">
 <div class="stats">
 <div class="stat"><b>{len(questions)}</b><span>去重后总题数</span></div>
@@ -229,7 +228,7 @@ HTML = f"""<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
 {trend_html()}
 <section id="sec-top"><h2 class="sec">🔥 高频 Top 12</h2><ul class="top">{tophtml}</ul></section>
 {secs}
-<footer>作者：施晔 2362404008 · 生成 2026-06-28 · 数据来源：小红书大模型评测面经 100 篇<br>提示：优先级按真实面经提问次数排（🔴P0被问≥5次必刷）。答案 AI 补充中。</footer>
+<footer>生成 2026-06-28 · 数据来源：小红书大模型评测面经 100 篇<br>提示：优先级按真实面经提问次数排（🔴P0被问≥5次必刷）。答案 AI 补充中。</footer>
 </div></main></div></body></html>"""
 
 open(OUT, "w", encoding="utf-8").write(HTML)
