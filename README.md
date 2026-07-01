@@ -11,7 +11,7 @@
 项目自带虚拟环境 `venv/`，已装好 `playwright==1.60.0` + chromium，**无需重装**。
 
 ```bash
-cd /Users/ye.shi/Desktop/school_work/小红书爬虫
+cd xhs-crawler
 source venv/bin/activate
 ```
 
@@ -23,13 +23,13 @@ source venv/bin/activate
 
 ```bash
 # 1. 首次扫码登录（打开浏览器，用小红书 App 扫码，登录态会存到 xhs_storage_state.json）
-python login.py
+python src/login.py
 
 # 2. 跑一遍所有关键词，增量抓取并保存（跑完会自动刷新看板）
-python run.py
+python src/run.py
 
 # 3. （可选）单独重新渲染 HTML 看板
-python render_html.py
+python src/render_html.py
 ```
 
 抓完后用浏览器打开根目录的 **`面经看板.html`** 即可查看，顶部可按分类切 Tab。
@@ -40,17 +40,42 @@ python render_html.py
 
 ---
 
+## 生成效果预览
+
+爬取结果会自动分类、去重并渲染成自包含 HTML，以下为实际生成效果：
+
+### 面经看板（`面经看板.html`）
+
+按分类切 Tab（全部 / 八股题 / 手撕算法题 / 综合），卡片展示标题、摘要、作者、发布时间、点赞数与来源关键词。
+
+![面经看板](docs/dashboard.jpg)
+
+### 面经题库（按真实提问频率排序 + 手撕专区）
+
+对 100 篇面经去重汇总，按被问次数排优先级，左侧主题分区导航，手撕题映射到本地练习入口。
+
+![面经题库](docs/qbank.jpg)
+
+---
+
 ## 三、文件说明
 
-| 文件 | 作用 |
+源码统一放在 `src/` 下：
+
+| 目录 / 文件 | 作用 |
 | --- | --- |
-| `config.py` | 配置：关键词、过滤年份、延时、路径、分类规则、浏览器参数 |
-| `login.py` | 扫码登录，保存 storage_state 登录态到本地 JSON |
-| `crawler.py` | 核心爬虫：搜索 + 滚动 + 拦截 XHR + DOM 兜底 + 分类 + 去重 + 存储 |
-| `run.py` | 定时任务入口，跑一遍所有关键词做增量更新，可被 cron/launchd 调用 |
-| `render_html.py` | 把 `data/` 结果渲染成自包含 HTML 看板（`面经看板.html`） |
+| `src/config.py` | 配置：关键词、过滤年份、延时、路径、分类规则、浏览器参数 |
+| `src/login.py` | 扫码登录，保存 storage_state 登录态到本地 JSON |
+| `src/crawler.py` | 核心爬虫：搜索 + 滚动 + 拦截 XHR + DOM 兜底 + 分类 + 去重 + 存储 |
+| `src/run.py` | 定时任务入口，跑一遍所有关键词做增量更新，可被 cron/launchd 调用 |
+| `src/render_html.py` | 把 `data/` 结果渲染成自包含 HTML 看板（`面经看板.html`） |
+| `src/gen_qbank_html.py` | 汇总去重后生成题库静态页面到 `output/` |
+| `src/read_note.py` | 按 URL 读取单篇笔记详情（标题/正文/评论等） |
+| `src/crawl_final.py` | 备用的整合式爬取脚本 |
 | `requirements.txt` | 依赖清单 |
-| `data/` | 输出目录：带时间戳的快照 JSON/CSV、汇总 `all_notes.json/csv`、去重记录 `seen_ids.json` |
+| `docs/` | README 展示用截图 |
+| `data/` | 输出目录：带时间戳的快照 JSON/CSV、汇总 `all_notes.json/csv`、去重记录 `seen_ids.json`（不上传） |
+| `output/` | 生成的题库 HTML（不上传） |
 
 抓取字段：标题、正文/摘要、作者、发布时间、点赞数、笔记链接、关键词来源、分类标签。
 
@@ -81,22 +106,22 @@ crontab -e
 加入一行（每天 9:30 跑一次，日志追加到 cron.log）：
 
 ```cron
-30 9 * * * cd /Users/ye.shi/Desktop/school_work/小红书爬虫 && /Users/ye.shi/Desktop/school_work/小红书爬虫/venv/bin/python run.py >> /Users/ye.shi/Desktop/school_work/小红书爬虫/cron.log 2>&1
+30 9 * * * cd /path/to/xhs-crawler && ./venv/bin/python src/run.py >> cron.log 2>&1
 ```
 
 > 注意：cron 默认无图形环境，若 `HEADLESS=False` 需要桌面已登录；建议定时任务时把 `config.HEADLESS` 改成 `True`。
 
 ### 方案 B：launchd（macOS 推荐）
 
-项目已附带示例 `com.shiye.xhs.crawler.plist`（每天 9:30 跑）。安装：
+项目已附带示例 `com.xhs.crawler.plist`（每天 9:30 跑）。安装：
 
 ```bash
-cp com.shiye.xhs.crawler.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.shiye.xhs.crawler.plist
+cp com.xhs.crawler.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.xhs.crawler.plist
 # 立即手动触发一次测试
-launchctl start com.shiye.xhs.crawler
+launchctl start com.xhs.crawler
 # 卸载
-launchctl unload ~/Library/LaunchAgents/com.shiye.xhs.crawler.plist
+launchctl unload ~/Library/LaunchAgents/com.xhs.crawler.plist
 ```
 
 plist 关键字段：`Program`/`ProgramArguments` 指向 venv 的 python + `run.py`，

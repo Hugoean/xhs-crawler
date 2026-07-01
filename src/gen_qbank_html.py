@@ -2,15 +2,17 @@
 """
 面经题库静态 HTML 生成器（服务端渲染，零 JS 依赖，绝不变骨架）
 读取：data/题库数据D.json（80题）、data/手撕题映射.json、data/手撕占比统计.json
-输出：实习面试准备/大模型评测_面经题库.html
+输出：output/大模型评测_面经题库.html
 """
 import json, os, html as _h
 
-BASE = os.path.dirname(os.path.abspath(__file__))
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # src/ 的上一级 = 项目根
 D = json.load(open(os.path.join(BASE, "data/题库数据D.json"), encoding="utf-8"))
 SHOU = json.load(open(os.path.join(BASE, "data/手撕题映射.json"), encoding="utf-8"))
 TREND = json.load(open(os.path.join(BASE, "data/手撕占比统计.json"), encoding="utf-8"))
-OUT = "/Users/ye.shi/Desktop/school_work/实习面试准备/大模型评测_面经题库.html"
+OUT_DIR = os.path.join(BASE, "output")
+os.makedirs(OUT_DIR, exist_ok=True)
+OUT = os.path.join(OUT_DIR, "大模型评测_面经题库.html")
 
 def esc(s): return _h.escape(str(s or ""))
 

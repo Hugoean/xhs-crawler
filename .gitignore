@@ -2,9 +2,10 @@
 xhs_storage_state.json
 *.plist
 
-# ===== 爬取的数据 / 本地归档,不上传 =====
+# ===== 爬取的数据 / 本地归档 / 生成产物,不上传 =====
 data/
 archive/
+output/
 
 # ===== 日志 =====
 *.log

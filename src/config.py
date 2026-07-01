@@ -8,8 +8,8 @@ import os
 import datetime
 
 # ============ 路径配置 ============
-# 项目根目录（本文件所在目录）
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# 项目根目录（本文件在 src/ 下，故取上一级）
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 数据输出目录（JSON / CSV 都放这里）
 DATA_DIR = os.path.join(BASE_DIR, "data")
